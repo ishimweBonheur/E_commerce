@@ -5,7 +5,6 @@ function Admin() {
     <div>
       <div>
         <HomeDash />
-        
       </div>
     </div>
   );
