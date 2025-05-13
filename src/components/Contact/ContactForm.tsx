@@ -207,7 +207,7 @@ function ContactForm() {
             {/* Embedded Google Map */}
             <div className="mt-6">
               <iframe
-                title="DOB Location"
+                title="DOB Office "
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15952.191308942272!2d30.0567026!3d-1.9440726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca6dc3a5b63b5%3A0x3b14e20e4b473295!2sKN%202%20St%2C%20Kigali%2C%20Rwanda!5e0!3m2!1sen!2srw!4v1715615793625!5m2!1sen!2srw"
                 width="100%"
                 height="300"

@@ -13,7 +13,8 @@ const initialState: ContactState = {
   success: false,
 };
 
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+console.log('API_BASE_URL:', API_BASE_URL); // Debug log
 
 export const sendMessage = createAsyncThunk(
   'contact/sendMessage',
@@ -22,9 +23,19 @@ export const sendMessage = createAsyncThunk(
     phoneNumber: string;
     email: string;
     message: string;
-  }) => {
-    const response = await axios.post(`${API_BASE_URL}/contact`, messageData);
-    return response.data;
+  }, { rejectWithValue }) => {
+    try {
+      const url = `${API_BASE_URL}/contact`;
+      console.log('Request URL:', url); // Debug log
+      console.log('Request Data:', messageData); // Debug log
+      const response = await axios.post(url, messageData);
+      return response.data;
+    } catch (error: any) {
+      console.error('Server Error:', error.response?.data); // Debug log
+      return rejectWithValue(
+        error.response?.data?.message || 'Failed to send message'
+      );
+    }
   }
 );
 
@@ -51,7 +62,7 @@ const contactSlice = createSlice({
       })
       .addCase(sendMessage.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to send message';
+        state.error = action.payload as string || 'Failed to send message';
         state.success = false;
       });
   },
