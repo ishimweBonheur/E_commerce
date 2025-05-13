@@ -13,7 +13,7 @@ function AdminRoutes({ children }: Adminprops) {
   if (user?.userType?.name === 'Admin') {
     return children;
   }
-  
+
   // Vendor has limited access
   if (user?.userType?.name === 'Vendor') {
     return children;

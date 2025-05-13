@@ -58,12 +58,3 @@ Before you run that commands you must have docker installed in your PC
 
 ## Authors
 
-- [Manzi Karenzi](https://github.com/jkarenzi)
-- [Leo Rurangwa](https://github.com/wayneleon1)
-- [Tresor Xavier](https://github.com/13XAVI)
-- [Sangwa Cedric](https://github.com/Dawaic6)
-- [Ambroise Muhayimana](https://github.com/ambroisegithub)
-- [Eric Niyibizi](https://github.com/niyibi250)
-- [Bernard Niyomugabo](https://github.com/niyobern)
-- [Bertrand Shema](https://github.com/bertrandshema)
-- [Pray Eddy Shimwa](https://github.com/EddyShimwa)

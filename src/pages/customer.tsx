@@ -87,7 +87,9 @@ function Customer() {
     setClickedcustomer(customer);
     setupRole(true);
     // Set initial role based on current user type
-    const currentRoleId = customer.userType.id ? parseInt(customer.userType.id) : 4; // Convert string to number
+    const currentRoleId = customer.userType.id
+      ? parseInt(customer.userType.id)
+      : 4; // Convert string to number
     setSelectedRole(currentRoleId);
   };
 
@@ -130,10 +132,10 @@ function Customer() {
   };
   const comformedit = async () => {
     if (!clickedcustomer) return;
-    
+
     setupRole(false);
     setupdating(true);
-    
+
     const formData: UserRoleUpdate = {
       userId: clickedcustomer.id,
       newRoleId: selectedRole,
@@ -175,24 +177,24 @@ function Customer() {
     setupRole(false);
   };
 
-  const handleStatusChange = async (customer: Buyer, newStatus: 'active' | 'inactive') => {
+  const handleStatusChange = async (
+    customer: Buyer,
+    newStatus: 'active' | 'inactive'
+  ) => {
     if (!customer) return;
-    
+
     setupdating(true);
-    const endpoint = newStatus === 'active' 
-      ? `${import.meta.env.VITE_BASE_URL}/activate/${customer.id}`
-      : `${import.meta.env.VITE_BASE_URL}/deactivate/${customer.id}`;
+    const endpoint =
+      newStatus === 'active'
+        ? `${import.meta.env.VITE_BASE_URL}/activate/${customer.id}`
+        : `${import.meta.env.VITE_BASE_URL}/deactivate/${customer.id}`;
 
     try {
-      const response = await axios.put(
-        endpoint,
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
+      const response = await axios.put(endpoint, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
 
       if (response.status === 200) {
         dispatch(fetchBuyers());
@@ -202,7 +204,9 @@ function Customer() {
         );
         setReRenderTrigger((prev) => !prev);
       } else {
-        throw new Error(`Failed to ${newStatus === 'active' ? 'activate' : 'suspend'} user`);
+        throw new Error(
+          `Failed to ${newStatus === 'active' ? 'activate' : 'suspend'} user`
+        );
       }
     } catch (error) {
       setupdating(false);
@@ -211,7 +215,9 @@ function Customer() {
           `Failed to ${newStatus === 'active' ? 'activate' : 'suspend'} user: ${error.response?.data?.message || error.message}`
         );
       } else {
-        showErrorToast(`An unexpected error occurred while updating user status`);
+        showErrorToast(
+          `An unexpected error occurred while updating user status`
+        );
       }
     }
   };
