@@ -54,12 +54,54 @@ function AppRoutes() {
         <Route path="browse-coats" element={<BrowseCoats />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="about" element={<Aboutus />} />
-        <Route path="features" element={<Suspense fallback={<div>Loading...</div>}><Features /></Suspense>} />
-        <Route path="user-guides" element={<Suspense fallback={<div>Loading...</div>}><UserGuides /></Suspense>} />
-        <Route path="webinars" element={<Suspense fallback={<div>Loading...</div>}><Webinars /></Suspense>} />
-        <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><Privacy /></Suspense>} />
-        <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><Terms /></Suspense>} />
-        <Route path="site-map" element={<Suspense fallback={<div>Loading...</div>}><SiteMap /></Suspense>} />
+        <Route
+          path="features"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Features />
+            </Suspense>
+          }
+        />
+        <Route
+          path="user-guides"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <UserGuides />
+            </Suspense>
+          }
+        />
+        <Route
+          path="webinars"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Webinars />
+            </Suspense>
+          }
+        />
+        <Route
+          path="privacy"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Privacy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="terms"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Terms />
+            </Suspense>
+          }
+        />
+        <Route
+          path="site-map"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <SiteMap />
+            </Suspense>
+          }
+        />
         <Route path="category/:categoryId" element={<CategoryProducts />} />
         <Route
           path="wishlist"

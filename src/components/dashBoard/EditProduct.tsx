@@ -115,7 +115,7 @@ function EditProducts() {
       tags: oldProduct.tags,
       type: oldProduct.type,
       isAvailable: oldProduct.isAvailable,
-      isFeatured: oldProduct.isFeatured
+      isFeatured: oldProduct.isFeatured,
     };
   };
 

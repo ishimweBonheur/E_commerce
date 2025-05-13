@@ -48,12 +48,12 @@ function PopularSection() {
 
           {/* Active Section Content */}
           <div className="relative overflow-hidden">
-            <div 
+            <div
               className="transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateX(-${
                   sections.findIndex((s) => s.id === activeSection) * 100
-                }%)`
+                }%)`,
               }}
             >
               <div className="flex">

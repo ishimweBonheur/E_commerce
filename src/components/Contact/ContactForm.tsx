@@ -189,27 +189,36 @@ function ContactForm() {
             </p>
           )}
         </div>
-        <div className="w-full md:w-1/2 p-0 bg-white shadow-md rounded-md">
-          <img
-            src="https://degree.rupacoaching.com/wp-content/uploads/2024/07/Degree-of-services-1-1024x684.webp"
-            className="w-full rounded-t-md h-80 object-cover object-center"
-            alt="DOB Team"
-          />
-          <div className="w-full p-8">
-            <ul className="list-none">
-              <li className="flex flex-row gap-8 font-light text-base">
-                <MapIcon className="text-violet-700 w-6" /> 2 KN st, Kigali -
-                Rwanda
-              </li>
-              <li className="flex flex-row gap-8 font-light text-base my-5">
-                <FaEnvelope className="text-violet-700 w-6" /> info@DOBshop.rw
-              </li>
-              <li className="flex flex-row gap-8 font-light text-base">
-                <PhoneIcon className="text-violet-700 w-6" /> +250 782 222 000
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div className="w-full md:w-1/2 p-0 bg-white shadow-md rounded-md">
+  <div className="w-full p-8">
+    <ul className="list-none">
+      <li className="flex flex-row gap-8 font-light text-base">
+        <MapIcon className="text-primary w-6" /> 2 KN St, Kigali - Rwanda
+      </li>
+      <li className="flex flex-row gap-8 font-light text-base my-5">
+        <FaEnvelope className="text-primary w-6" /> info@DOBshop.rw
+      </li>
+      <li className="flex flex-row gap-8 font-light text-base">
+        <PhoneIcon className="text-primary w-6" /> +250 782 222 000
+      </li>
+    </ul>
+
+    {/* Embedded Google Map */}
+    <div className="mt-6">
+      <iframe
+        title="DOB Location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15952.191308942272!2d30.0567026!3d-1.9440726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca6dc3a5b63b5%3A0x3b14e20e4b473295!2sKN%202%20St%2C%20Kigali%2C%20Rwanda!5e0!3m2!1sen!2srw!4v1715615793625!5m2!1sen!2srw"
+        width="100%"
+        height="300"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="rounded-md"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );

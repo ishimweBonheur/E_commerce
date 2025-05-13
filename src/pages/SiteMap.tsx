@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 const siteMap = [
@@ -39,11 +38,15 @@ const siteMap = [
 function SiteMap() {
   return (
     <main className="p-10 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-primary text-center">Site Map</h1>
+      <h1 className="text-3xl font-bold mb-8 text-primary text-center">
+        Site Map
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {siteMap.map((section) => (
           <div key={section.title} className="bg-white rounded-xl shadow p-6">
-            <h2 className="text-xl font-semibold text-black">{section.title}</h2>
+            <h2 className="text-xl font-semibold text-black">
+              {section.title}
+            </h2>
             <ul className="mt-4 space-y-2">
               {section.links.map((link) => (
                 <li key={link.name}>
@@ -60,4 +63,4 @@ function SiteMap() {
   );
 }
 
-export default SiteMap; 
+export default SiteMap;

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
 @tailwind base;
@@ -9,7 +8,6 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
-
 
 /* PriceRangeSlider.css */
 
@@ -84,7 +82,8 @@ button,
 }
 
 .filter-yellow {
-  filter: invert(73%) sepia(88%) saturate(1033%) hue-rotate(359deg) brightness(103%) contrast(104%);
+  filter: invert(73%) sepia(88%) saturate(1033%) hue-rotate(359deg)
+    brightness(103%) contrast(104%);
 }
 
 /* Google Translate Styles */
@@ -105,7 +104,7 @@ button,
 }
 
 .goog-te-gadget-simple:hover {
-  border-color: #6D31ED !important;
+  border-color: #6d31ed !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
 }
 
@@ -122,7 +121,7 @@ button,
 }
 
 .goog-te-menu-value span:hover {
-  color: #6D31ED !important;
+  color: #6d31ed !important;
 }
 
 .goog-te-banner-frame {
@@ -130,7 +129,9 @@ button,
 }
 
 .goog-te-menu-frame {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
   border-radius: 6px !important;
   bottom: 100% !important;
   top: auto !important;
@@ -138,20 +139,22 @@ button,
 }
 
 /* Position fixes for the dropdown */
-.goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div {
+.goog-te-menu2-item div,
+.goog-te-menu2-item:link div,
+.goog-te-menu2-item:visited div,
+.goog-te-menu2-item:active div {
   color: #374151 !important;
   padding: 8px 12px !important;
-  
 }
 
 .goog-te-menu2-item:hover div {
-  background-color: #F3F4F6 !important;
-  color: #6D31ED !important;
+  background-color: #f3f4f6 !important;
+  color: #6d31ed !important;
 }
 
 .goog-te-menu2-item-selected div {
-  background-color: #EEE6FE !important;
-  color: #6D31ED !important;
+  background-color: #eee6fe !important;
+  color: #6d31ed !important;
 }
 
 /* Hide Google Translate banner elements */
@@ -160,11 +163,11 @@ button,
 .VIpgJd-yAWNEb-L7lbkb,
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc,
 .goog-te-banner-frame.skiptranslate {
-    display: none !important;
+  display: none !important;
 }
 
 body {
-    top: 0 !important;
+  top: 0 !important;
 }
 
 /* Custom styles for GoogleTranslate button */

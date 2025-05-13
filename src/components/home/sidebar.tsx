@@ -30,7 +30,6 @@ function Categories() {
     <div>
       <div
         className={`${!clicked ? 'hidden' : 'flex'} gap-2 text-xl text-gray-800 tracking-wider w-full justify-between py-3 px-6 border-b items-center md:hidden`}
-         
         onClick={reset}
         role="button"
         tabIndex={0}
@@ -61,7 +60,6 @@ function Categories() {
       >
         <div
           className="flex gap-2 text-xl text-gray-800 tracking-wider w-full justify-between py-3 px-6 border-b border-gray-300 items-center"
-           
           onClick={reset}
           role="button"
           tabIndex={0}

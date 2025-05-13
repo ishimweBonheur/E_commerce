@@ -63,7 +63,9 @@ function DashNavbar() {
                 <h2 className="text-sm font-medium text-gray-800">
                   {`${user.firstName} ${user.lastName}`}
                 </h2>
-                <span className="text-xs text-gray-500">{user.userType?.name}</span>
+                <span className="text-xs text-gray-500">
+                  {user.userType?.name}
+                </span>
               </div>
               <FaAngleDown size="15" className="text-gray-500" />
             </button>
@@ -88,11 +90,7 @@ function DashNavbar() {
             )}
           </div>
         ) : (
-          <HSButton
-            path="/login"
-            title="Sign In"
-            styles="px-4 py-2"
-          />
+          <HSButton path="/login" title="Sign In" styles="px-4 py-2" />
         )}
       </div>
     </div>

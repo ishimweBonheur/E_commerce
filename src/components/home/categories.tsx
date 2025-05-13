@@ -31,10 +31,7 @@ function Categories() {
     <div className="p-4 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="mb-12 text-center">
-        <h2
-          className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3"
-           
-        >
+        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
           Shop by Categories
         </h2>
         <p className="text-lg text-primary max-w-2xl mx-auto font-medium">

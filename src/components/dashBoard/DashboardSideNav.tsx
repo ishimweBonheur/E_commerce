@@ -117,10 +117,7 @@ interface SideBarItemProps {
   Role: string;
 }
 
-function SideBarItem({
-  item,
-  Role,
-}: SideBarItemProps) {
+function SideBarItem({ item, Role }: SideBarItemProps) {
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
   const isActive = location.pathname === item.path;
@@ -133,9 +130,7 @@ function SideBarItem({
     <li>
       <div
         className={`flex items-center justify-between p-3 rounded-lg transition-colors ${
-          isActive
-            ? 'bg-primary text-white'
-            : 'text-gray-600 hover:bg-gray-50'
+          isActive ? 'bg-primary text-white' : 'text-gray-600 hover:bg-gray-50'
         }`}
       >
         <Link
@@ -231,13 +226,7 @@ function DashboardSideNav() {
           <ul className="flex-1 px-3 py-4 space-y-1">
             {sideBarItems.map((item) => {
               if (item.role.includes(Role!)) {
-                return (
-                  <SideBarItem
-                    Role={Role!}
-                    key={item.name}
-                    item={item}
-                  />
-                );
+                return <SideBarItem Role={Role!} key={item.name} item={item} />;
               }
               return null;
             })}

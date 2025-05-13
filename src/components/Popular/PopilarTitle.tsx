@@ -17,7 +17,15 @@ function PopularTitle({
       <div className="group">
         <h2 className="text-xl font-semibold text-gray-800 group-hover:text-orange-600 transition-colors flex items-center gap-2">
           {section}
-          <span className="text-sm text-gray-500 font-normal">({section === "Most Popular" ? "By Rating" : section === "Most Selling" ? "By Sales" : "Latest"})</span>
+          <span className="text-sm text-gray-500 font-normal">
+            (
+            {section === 'Most Popular'
+              ? 'By Rating'
+              : section === 'Most Selling'
+                ? 'By Sales'
+                : 'Latest'}
+            )
+          </span>
         </h2>
         <div className="h-0.5 w-16 bg-orange-600 rounded-full mt-1.5 group-hover:w-24 transition-all duration-300 opacity-80"></div>
       </div>

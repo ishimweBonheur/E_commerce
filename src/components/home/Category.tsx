@@ -5,10 +5,7 @@ interface CategoryProps {
 
 export default function CategoryComponent({ icon, name }: CategoryProps) {
   return (
-    <div
-      className="flex gap-2 text-xl text-gray-600 tracking-wider hover:text-primary cursor-pointer"
-      
-    >
+    <div className="flex gap-2 text-xl text-gray-600 tracking-wider hover:text-primary cursor-pointer">
       <img
         src={
           icon.startsWith('/') || icon.startsWith('https')

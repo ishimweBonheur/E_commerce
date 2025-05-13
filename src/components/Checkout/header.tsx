@@ -36,10 +36,7 @@ const headerItems: HeaderItem[] = [
 
 export default function Header() {
   return (
-    <header
-      className="mx-0 md:mx-16 flex justify-between items-center px-8"
-    
-    >
+    <header className="mx-0 md:mx-16 flex justify-between items-center px-8">
       <div className="flex flex-col">
         <h1 className="text-xl font-bold py-3">Complete Your Order</h1>
         <span className="text-gray-600">

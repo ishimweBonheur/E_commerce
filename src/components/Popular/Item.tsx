@@ -7,7 +7,9 @@ interface MostPopularItemProps {
 }
 
 function SingleItem({ product }: MostPopularItemProps) {
-  const discountPercentage = Math.round(((product.regularPrice - product.salesPrice) / product.regularPrice) * 100);
+  const discountPercentage = Math.round(
+    ((product.regularPrice - product.salesPrice) / product.regularPrice) * 100
+  );
 
   return (
     <a
@@ -33,7 +35,9 @@ function SingleItem({ product }: MostPopularItemProps) {
           </h3>
           <div className="flex items-center gap-1 mt-1">
             <FaStar className="text-primary w-3 h-3" />
-            <span className="text-xs text-gray-600">{product.averageRating.toFixed(1)}</span>
+            <span className="text-xs text-gray-600">
+              {product.averageRating.toFixed(1)}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-2 mt-1.5">

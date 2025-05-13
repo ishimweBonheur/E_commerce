@@ -52,7 +52,11 @@ function Footer() {
       <div className="md:flex justify-around flex-wrap">
         <div className="py-4 md:py-10">
           <div className="flex items-center ">
-            <img src="/iconcart.svg" alt="" className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]" />
+            <img
+              src="/iconcart.svg"
+              alt=""
+              className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+            />
             <Link to="/" className="font-semibold text-xl" onClick={scroolUp}>
               DOB
             </Link>
@@ -71,7 +75,6 @@ function Footer() {
           >
             Features
           </Link>
-    
         </div>
         <div className="py-2 md:py-0">
           <Link
@@ -80,7 +83,7 @@ function Footer() {
           >
             Resources
           </Link>
-    
+
           <Link
             to="/user-guides"
             className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-primary transition-colors duration-300"
@@ -187,17 +190,32 @@ function Footer() {
       </div>
       <hr className="bg-grayLight " />
       <div className="md:flex justify-around flex-wrap  border-0 mt-5">
-      <LanguageSelector />
+        <LanguageSelector />
         <ul className="flex md:space-x-4 mt-2 md:mt-0">
           <li>©️2025 Brand, Inc.</li>
           <li>
-            <Link to="/privacy" className="hover:text-primary transition-colors duration-300">Privacy</Link>
+            <Link
+              to="/privacy"
+              className="hover:text-primary transition-colors duration-300"
+            >
+              Privacy
+            </Link>
           </li>
           <li>
-            <Link to="/terms" className="hover:text-primary transition-colors duration-300">Terms</Link>
+            <Link
+              to="/terms"
+              className="hover:text-primary transition-colors duration-300"
+            >
+              Terms
+            </Link>
           </li>
           <li>
-            <Link to="/site-map" className="hover:text-primary transition-colors duration-300">Site Map</Link>
+            <Link
+              to="/site-map"
+              className="hover:text-primary transition-colors duration-300"
+            >
+              Site Map
+            </Link>
           </li>
         </ul>
         <div>

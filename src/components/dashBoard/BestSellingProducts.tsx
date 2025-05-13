@@ -43,7 +43,10 @@ function BestSellingProducts() {
   }, [token]);
 
   const chartData = bestselling.map((product) => ({
-    name: product.name.length > 15 ? `${product.name.slice(0, 15)}...` : product.name,
+    name:
+      product.name.length > 15
+        ? `${product.name.slice(0, 15)}...`
+        : product.name,
     sales: product.averageRating * 100, // Convert rating to percentage for better visualization
     price: product.regularPrice,
   }));
@@ -53,9 +56,7 @@ function BestSellingProducts() {
       return (
         <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
           <p className="font-medium">{payload[0].payload.name}</p>
-          <p className="text-sm text-gray-600">
-            Sales: {payload[0].value}%
-          </p>
+          <p className="text-sm text-gray-600">Sales: {payload[0].value}%</p>
           <p className="text-sm text-gray-600">
             Price: ${payload[0].payload.price}
           </p>
@@ -67,7 +68,9 @@ function BestSellingProducts() {
 
   return (
     <div className="w-full h-[400px] bg-white rounded-xl p-6 shadow-sm">
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">Best Selling Products</h2>
+      <h2 className="text-lg font-semibold text-gray-800 mb-4">
+        Best Selling Products
+      </h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={chartData}

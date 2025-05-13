@@ -82,7 +82,6 @@ export default function FilterBar({ orders, handleFilter, search }: PageProps) {
           placeholder="Search order..."
           type="text"
           className="w-full outline-none bg-white placeholder:text-gray-400 font-light"
-           
         />
       </div>
     </div>

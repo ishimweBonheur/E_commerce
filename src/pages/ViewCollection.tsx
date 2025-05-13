@@ -19,14 +19,21 @@ function ViewCollection() {
         await dispatch(fetchProducts()).unwrap();
       } catch (err) {
         console.error('Error fetching products:', err);
-        setError(err instanceof Error ? err.message : 'Failed to fetch products');
+        setError(
+          err instanceof Error ? err.message : 'Failed to fetch products'
+        );
       }
     };
     fetchData();
   }, [dispatch]);
 
   const featuredProducts = products.filter((product: Product) => {
-    console.log('Checking product:', product.name, 'isFeatured:', product.isFeatured);
+    console.log(
+      'Checking product:',
+      product.name,
+      'isFeatured:',
+      product.isFeatured
+    );
     return product.isFeatured;
   });
 
@@ -61,7 +68,9 @@ function ViewCollection() {
     return (
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Featured Collection</h1>
-        <p className="text-center text-gray-600">No featured products available at this time.</p>
+        <p className="text-center text-gray-600">
+          No featured products available at this time.
+        </p>
       </div>
     );
   }

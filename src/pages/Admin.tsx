@@ -5,8 +5,8 @@ function Admin() {
     <div>
       <div>
         <HomeDash />
+        
       </div>
-      {/* add more for dashboard */}
     </div>
   );
 }
