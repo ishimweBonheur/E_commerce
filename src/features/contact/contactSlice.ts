@@ -18,12 +18,15 @@ console.log('API_BASE_URL:', API_BASE_URL); // Debug log
 
 export const sendMessage = createAsyncThunk(
   'contact/sendMessage',
-  async (messageData: {
-    name: string;
-    phoneNumber: string;
-    email: string;
-    message: string;
-  }, { rejectWithValue }) => {
+  async (
+    messageData: {
+      name: string;
+      phoneNumber: string;
+      email: string;
+      message: string;
+    },
+    { rejectWithValue }
+  ) => {
     try {
       const url = `${API_BASE_URL}/contact`;
       console.log('Request URL:', url); // Debug log
@@ -62,7 +65,7 @@ const contactSlice = createSlice({
       })
       .addCase(sendMessage.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string || 'Failed to send message';
+        state.error = (action.payload as string) || 'Failed to send message';
         state.success = false;
       });
   },

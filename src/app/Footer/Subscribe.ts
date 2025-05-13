@@ -17,7 +17,10 @@ const subscribeUrl = `${import.meta.env.VITE_BASE_URL}/subscribe`;
 
 export const submitForm = createAsyncThunk(
   'form/submitForm',
-  async (subdata: Omit<SubscribeState, 'status' | 'error'>, { rejectWithValue }) => {
+  async (
+    subdata: Omit<SubscribeState, 'status' | 'error'>,
+    { rejectWithValue }
+  ) => {
     try {
       console.log('Sending request to:', subscribeUrl);
       console.log('Request data:', { email: subdata.email });
@@ -29,9 +32,13 @@ export const submitForm = createAsyncThunk(
       if (axios.isAxiosError(error) && error.response) {
         console.log('Error response data:', error.response.data);
         if (error.response.data.errors) {
-          return rejectWithValue(error.response.data.errors[0].msg || 'Failed to subscribe');
+          return rejectWithValue(
+            error.response.data.errors[0].msg || 'Failed to subscribe'
+          );
         }
-        return rejectWithValue(error.response.data.message || 'Failed to subscribe');
+        return rejectWithValue(
+          error.response.data.message || 'Failed to subscribe'
+        );
       }
       return rejectWithValue('An unexpected error occurred');
     }
@@ -62,7 +69,7 @@ const subscribeSlice = createSlice({
       })
       .addCase(submitForm.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload as string || 'Failed to subscribe';
+        state.error = (action.payload as string) || 'Failed to subscribe';
         setTimeout(() => {
           state.error = null;
         }, 3000);

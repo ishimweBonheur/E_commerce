@@ -27,6 +27,10 @@ interface Buyer {
   picture: string;
   status: string;
   updatedAt: string;
+  userType: {
+    id: string;
+    name: string;
+  };
 }
 
 interface UserRoleUpdate {
@@ -60,7 +64,9 @@ function Customer() {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredcustomer(buyers.filter((v) => v.userType.name === 'Buyer'));
+    if (buyers) {
+      setFilteredcustomer(buyers.filter((v) => v.userType.name === 'Buyer'));
+    }
   }, [buyers, reRenderTrigger]);
 
   const customers = filteredcustomers;
@@ -70,9 +76,19 @@ function Customer() {
   const itemsOnPreviousPage = itemsOnNextPage - numberofItemPerPage;
   const visiblePage = customers.slice(itemsOnPreviousPage, itemsOnNextPage);
 
-  const HandleEdit = (customer: Buyer | null) => {
-    setDeactivate(true);
+  const handleEdit = (customer: Buyer) => {
     setClickedcustomer(customer);
+    setmode('edit');
+    setDeactivate(true);
+  };
+
+  const handleRole = (customer: Buyer | null) => {
+    if (!customer) return;
+    setClickedcustomer(customer);
+    setupRole(true);
+    // Set initial role based on current user type
+    const currentRoleId = customer.userType.id ? parseInt(customer.userType.id) : 4; // Convert string to number
+    setSelectedRole(currentRoleId);
   };
 
   const HandleActive = (customer: Buyer | null) => {
@@ -112,43 +128,45 @@ function Customer() {
       }
     }
   };
-  const handleRole = (customer: Buyer | null) => {
-    setClickedcustomer(customer);
-    setupRole(true);
-  };
   const comformedit = async () => {
+    if (!clickedcustomer) return;
+    
     setupRole(false);
     setupdating(true);
+    
     const formData: UserRoleUpdate = {
-      userId: clickedcustomer?.id ?? 0,
+      userId: clickedcustomer.id,
       newRoleId: selectedRole,
     };
+
     try {
-      await axios.patch(
+      const response = await axios.patch(
         `${import.meta.env.VITE_BASE_URL}/roles/change_user_role`,
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
       );
-      navigate(`/dashboard/customers`);
-      dispatch(fetchBuyers());
-      setupdating(false);
-      showSuccessToast(
-        `${clickedcustomer?.firstName} Role was Changed Successfully`
-      );
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        navigate(`/dashboard/customers`);
+
+      if (response.status === 200) {
+        dispatch(fetchBuyers());
         setupdating(false);
-        showErrorToast(
-          `Changing the Role of ${clickedcustomer?.firstName} ${clickedcustomer?.lastName} failed`
-        );
-        throw new Error(
-          `Error Chenging Role of ${clickedcustomer?.firstName} ${clickedcustomer?.lastName}, ${error.message}`
+        showSuccessToast(
+          `${clickedcustomer.firstName}'s role was changed successfully`
         );
       } else {
-        navigate(`/dashboard/customers`);
-        setupdating(false);
-        showErrorToast(`Changing Role of ${clickedcustomer?.firstName} failed`);
-        throw new Error(`Unexpected error occurred: ${error}`);
+        throw new Error('Failed to change role');
+      }
+    } catch (error) {
+      setupdating(false);
+      if (axios.isAxiosError(error)) {
+        showErrorToast(
+          `Failed to change role: ${error.response?.data?.message || error.message}`
+        );
+      } else {
+        showErrorToast('An unexpected error occurred while changing role');
       }
     }
   };
@@ -156,68 +174,64 @@ function Customer() {
   const closedit = () => {
     setupRole(false);
   };
-  const activateVendor = `${import.meta.env.VITE_BASE_URL}/activate/${clickedcustomer?.id}`;
 
-  const HandleActivate = (customer: Buyer | null) => {
-    if (customer?.status !== 'active') {
-      setupdating(true);
-      setActivate(false);
-      axios
-        .put(activateVendor, null, {
+  const handleStatusChange = async (customer: Buyer, newStatus: 'active' | 'inactive') => {
+    if (!customer) return;
+    
+    setupdating(true);
+    const endpoint = newStatus === 'active' 
+      ? `${import.meta.env.VITE_BASE_URL}/activate/${customer.id}`
+      : `${import.meta.env.VITE_BASE_URL}/deactivate/${customer.id}`;
+
+    try {
+      const response = await axios.put(
+        endpoint,
+        null,
+        {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setupdating(false);
-            dispatch(fetchBuyers());
-            showSuccessToast(`${customer?.firstName} Activated Successfully`);
-            setReRenderTrigger((prev) => !prev);
-          } else {
-            setupdating(false);
-            showErrorToast('Failed to Activate the customer');
-          }
-        })
-        .catch((error) => {
-          setupdating(false);
-          showErrorToast(error.message);
-        });
-    } else {
-      showErrorToast('User is Already Active');
+        }
+      );
+
+      if (response.status === 200) {
+        dispatch(fetchBuyers());
+        setupdating(false);
+        showSuccessToast(
+          `${customer.firstName} ${newStatus === 'active' ? 'activated' : 'suspended'} successfully`
+        );
+        setReRenderTrigger((prev) => !prev);
+      } else {
+        throw new Error(`Failed to ${newStatus === 'active' ? 'activate' : 'suspend'} user`);
+      }
+    } catch (error) {
+      setupdating(false);
+      if (axios.isAxiosError(error)) {
+        showErrorToast(
+          `Failed to ${newStatus === 'active' ? 'activate' : 'suspend'} user: ${error.response?.data?.message || error.message}`
+        );
+      } else {
+        showErrorToast(`An unexpected error occurred while updating user status`);
+      }
     }
   };
 
-  const updatecustomerStatus = `${import.meta.env.VITE_BASE_URL}/deactivate/${clickedcustomer?.id}`;
+  const HandleActivate = (customer: Buyer | null) => {
+    if (!customer) return;
+    if (customer.status === 'active') {
+      showErrorToast('User is already active');
+      return;
+    }
+    handleStatusChange(customer, 'active');
+  };
 
   const handleSuspend = (customer: Buyer | null) => {
-    if (customer?.status !== 'inactive') {
-      setupdating(true);
-      setDeactivate(false);
-      axios
-        .put(updatecustomerStatus, null, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setupdating(false);
-            dispatch(fetchBuyers());
-            showSuccessToast(`${customer?.firstName} Suspended Successfully`);
-            setReRenderTrigger((prev) => !prev);
-          } else {
-            setupdating(false);
-            showErrorToast('Failed to Suspend the vendor');
-          }
-        })
-        .catch((error) => {
-          setupdating(false);
-          showErrorToast(error.message);
-        });
-    } else {
-      showErrorToast('User is Already Inactive');
+    if (!customer) return;
+    if (customer.status === 'inactive') {
+      showErrorToast('User is already inactive');
+      return;
     }
+    handleStatusChange(customer, 'inactive');
   };
 
   const DateFormat = (udpdatedAt: string) => {
@@ -420,7 +434,7 @@ function Customer() {
                   <button type="submit" onClick={() => HandleActive(v)}>
                     <RefreshCcw className="w-5 hover:text-primary" />
                   </button>
-                  <button type="submit" onClick={() => HandleEdit(v)}>
+                  <button type="submit" onClick={() => handleEdit(v)}>
                     <Power className="w-5 text-redBg hover:text-primary" />
                   </button>
                   <button
@@ -514,7 +528,7 @@ function Customer() {
                 <button type="submit" className="mr-2">
                   <Power
                     className="w-5 text-redBg hover:text-primary"
-                    onClick={() => HandleEdit(v)}
+                    onClick={() => handleEdit(v)}
                   />
                 </button>
                 <button

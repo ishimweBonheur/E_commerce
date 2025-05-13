@@ -106,7 +106,7 @@ function AppRoutes() {
         <Route
           path="wishlist"
           element={
-            <ProtectedRoute roles={['Buyer']}>
+            <ProtectedRoute roles={['Buyer', 'Admin']}>
               <Wishlist />
             </ProtectedRoute>
           }
@@ -115,7 +115,7 @@ function AppRoutes() {
         <Route
           path="cart"
           element={
-            <ProtectedRoute roles={['Buyer']}>
+            <ProtectedRoute roles={['Buyer', 'Admin']}>
               <Cart />
             </ProtectedRoute>
           }
@@ -123,7 +123,7 @@ function AppRoutes() {
         <Route
           path="checkout"
           element={
-            <ProtectedRoute roles={['Buyer']}>
+            <ProtectedRoute roles={['Buyer', 'Admin']}>
               <CheckoutPage />
             </ProtectedRoute>
           }

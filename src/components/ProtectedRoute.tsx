@@ -10,6 +10,12 @@ interface ProtectedRouteProps {
 function ProtectedRoute({ children, roles }: ProtectedRouteProps) {
   const user = useAppSelector((state) => state.signIn.user);
 
+  // Admin has access to everything
+  if (user?.userType?.name === 'Admin') {
+    return children;
+  }
+
+  // Other users need to have their role in the roles array
   if (user && user.userType && roles.includes(user.userType.name)) {
     return children;
   }
