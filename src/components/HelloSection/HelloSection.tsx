@@ -43,7 +43,7 @@ function HeroBanner() {
 
   // Auto-advance slides
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: number;
     if (isAutoPlaying) {
       interval = setInterval(() => {
         setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));

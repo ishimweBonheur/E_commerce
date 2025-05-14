@@ -50,8 +50,6 @@ function HomeDash() {
   const { allProducts } = useSelector((state: RootState) => state.products);
   const [sum, setSum] = useState(0);
   const [tproduct, setAllproduct] = useState(0);
-  const [vendorSalesData, setVendorSalesData] = useState([]);
-  const [vendorProductsData, setVendorProductsData] = useState([]);
 
   function getGreeting(): string {
     const now = new Date();

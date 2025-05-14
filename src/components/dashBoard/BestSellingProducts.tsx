@@ -13,12 +13,6 @@ import {
   TooltipProps,
 } from 'recharts';
 
-interface ChartData {
-  name: string;
-  sales: number;
-  price: number;
-}
-
 function BestSellingProducts() {
   const token = useAppSelector((state) => state.signIn.token);
   const [bestselling, setBestSelling] = useState<Product[]>([]);
