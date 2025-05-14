@@ -25,16 +25,16 @@ function FeaturedSection() {
     <div className="w-full mx-auto mt-8 md:mt-12 px-16">
       <div className="flex flex-row justify-between items-center mb-6">
         <div className="flex flex-col lg:flex-row gap-2 md:gap-2 lg:gap-6 w-full md:w-3/4 items-center">
-          <h2 className="text-3xl font-semibold text-black w-full lg:w-auto text-center md:text-left">
+          <h2 className="text-2xl font-semibold text-black w-full lg:w-auto text-center md:text-left">
             New Arrivals
           </h2>
-          <p className="text-sm font-light text-black w-full lg:w-auto text-center md:text-left">
+          <p className="text-lg font-light text-gray-500 w-full lg:w-auto text-center md:text-left">
             Check out our latest products just added to our collection.
           </p>
         </div>
         <Link
           to="/shop"
-          className="hidden md:flex items-center p-2 rounded-xl border-violet-700 border text-violet-700 text-sm hover:bg-violet-200"
+          className="hidden md:flex items-center p-2 rounded-xl border-primary border text-primary text-sm hover:bg-orange-200"
         >
           View All <IoIosArrowForward />
         </Link>
@@ -42,7 +42,7 @@ function FeaturedSection() {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {latestProducts.length === 0 && (
           <div>
-            <p className="text-center text-xl text-black">No Products Found</p>
+            <p className="text-center text-sm text-black">No Products Found</p>
           </div>
         )}
         {latestProducts.map((product) => (

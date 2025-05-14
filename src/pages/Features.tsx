@@ -43,7 +43,15 @@ function Features() {
             key={feature.title}
             className="bg-white rounded-xl shadow p-6 flex items-center gap-4"
           >
-            <img src={feature.icon} alt={feature.title} className="w-16 h-16" />
+            <img
+              src={feature.icon}
+              alt={feature.title}
+              className="w-16 h-16 object-contain"
+              style={{
+                filter:
+                  'invert(18%) sepia(59%) saturate(74%) hue-rotate(2deg) brightness(90%) contrast(84%)',
+              }}
+            />
             <div>
               <h2 className="text-xl font-semibold text-black">
                 {feature.title}

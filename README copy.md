@@ -57,4 +57,3 @@ Before you run that commands you must have docker installed in your PC
    ```
 
 ## Authors
-

@@ -87,14 +87,14 @@ function ProductCard({ product }: ProductCardProps) {
               : 'https://imageplaceholder.net/600x500'
           }
           alt={product.name}
-          className="w-full h-48 object-cover rounded-tl-md rounded-tr-md"
+          className="w-full h-40 object-cover rounded-tl-lg rounded-tr-lg shadow-md transition-transform transform hover:scale-105"
         />
       </button>
-      <span className="absolute top-4 right-4 text-white bg-red-600 py-1 px-4 font-thin rounded-xl text-sm">
+      <span className="absolute top-2 right-2 text-white bg-red-600 py-1 px-3 font-semibold rounded-lg text-xs shadow">
         {`${Math.round((product.regularPrice - product.salesPrice) / product.regularPrice / 0.01)}% Off`}
       </span>
       <div
-        className="p-2 flex flex-col gap-2"
+        className="p-4 flex flex-col gap-2"
         style={{
           fontFamily:
             'Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif',
@@ -103,18 +103,18 @@ function ProductCard({ product }: ProductCardProps) {
         <div className="flex justify-between items-center">
           <button
             type="button"
-            className="text-lg font-semibold text-gray-800 cursor-pointer"
+            className="text-md font-semibold text-gray-800 cursor-pointer hover:text-gray-600 transition-colors"
             onClick={() => navigate(`/product-details/${product.id}`)}
           >
-            {product.name.substring(0, 17)}
-            {product.name.length > 17 && '...'}
+            {product.name.substring(0, 15)}
+            {product.name.length > 15 && '...'}
           </button>
           {user?.userType.name !== 'Vendor' &&
             (isInWishlist(product, wishlistProducts) ? (
               <FaHeart
                 color="#FFA500"
-                size={20}
-                className="cursor-pointer"
+                size={24}
+                className="cursor-pointer hover:text-red-500 transition-colors"
                 onClick={() =>
                   dispatch(removeFromWishlist({ id: product.id, token }))
                 }
@@ -122,21 +122,21 @@ function ProductCard({ product }: ProductCardProps) {
             ) : (
               <FaRegHeart
                 color="#565D6D"
-                size={20}
-                className="cursor-pointer"
+                size={24}
+                className="cursor-pointer hover:text-red-500 transition-colors"
                 onClick={() =>
                   dispatch(addToWishlist({ token, id: product.id }))
                 }
               />
             ))}
         </div>
-        <p className="text-gray-400 tracking-wide font-light text-sm">
-          {product.shortDesc.substring(0, 27)}
-          {product.shortDesc.length > 27 && '...'}
+        <p className="text-gray-500 tracking-wide font-light text-sm">
+          {product.shortDesc.substring(0, 30)}
+          {product.shortDesc.length > 30 && '...'}
         </p>
         <div className="flex items-center gap-2 py-2 w-fit">
           <div className="flex items-center font-medium gap-2 relative w-fit">
-            <span className="text-xl">{product.averageRating}</span>
+            <span className="text-lg">{product.averageRating}</span>
 
             {Array.from({ length: Math.floor(product.averageRating) }).map(
               (_, index) => {
@@ -144,7 +144,7 @@ function ProductCard({ product }: ProductCardProps) {
                   <div data-testid="ratingStar" key={index}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-primary"
+                      className="h-4 w-4 text-primary"
                       viewBox="0 0 36 36"
                     >
                       <path
@@ -160,7 +160,7 @@ function ProductCard({ product }: ProductCardProps) {
               {product.averageRating % 1 !== 0 && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-4 w-4"
                   viewBox="0 0 36 36"
                   data-testid="halfStar"
                 >
@@ -202,7 +202,7 @@ function ProductCard({ product }: ProductCardProps) {
                 <div data-testid="emptyStar" key={index}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-gray-400"
+                    className="h-4 w-4 text-gray-400"
                     viewBox="0 0 36 36"
                   >
                     <path
@@ -217,10 +217,10 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="flex items-center justify-between py-2">
           <div className="flex gap-4 items-center">
-            <span className="text-red-700 font-bold text-2xl">
+            <span className="text-red-700 font-bold text-xl">
               ${product.salesPrice}
             </span>
-            <span className="line-through text-gray-500">
+            <span className="line-through text-gray-400 text-sm">
               ${product.regularPrice}
             </span>
           </div>
@@ -228,7 +228,7 @@ function ProductCard({ product }: ProductCardProps) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="bg-red-600 text-white h-10 w-10 rounded p-2 cursor-pointer hover:bg-red-700 transition-colors duration-200"
+              className="bg-red-600 text-white h-8 w-8 rounded p-2 cursor-pointer hover:bg-red-700 transition-colors duration-200"
               style={{ display: cartId ? 'block' : 'none' }}
               id="removeFromCart"
             >
@@ -244,7 +244,7 @@ function ProductCard({ product }: ProductCardProps) {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="bg-primary text-white h-10 w-10 rounded p-2 cursor-pointer hover:bg-thickorenge transition-colors duration-200"
+              className="bg-primary text-white h-10 w-10 rounded p-2 cursor-pointer hover:bg-orange-700 transition-colors duration-200"
               viewBox="0 0 256 256"
               data-testid="addToCart"
               style={{ display: cartId ? 'none' : 'block' }}

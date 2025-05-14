@@ -300,7 +300,7 @@ function ProductDetails() {
               {isBestSeller(product, bestSellers) && (
                 <button
                   type="button"
-                  className="flex px-2 py-1 items-center rounded-2xl bg-blueBg text-white text-xs"
+                  className="flex px-2 py-1 items-center rounded-2xl bg-blueBg text-white text-sm"
                 >
                   Best Seller
                 </button>
@@ -415,7 +415,7 @@ function ProductDetails() {
             </div>
             <div className="flex flex-col gap-4 w-full">
               <h2 className="m-0">Promotion</h2>
-              <div className="p-2 w-fit rounded-md text-xs flex items-center justify-center bg-violeteBg text-primary">
+              <div className="p-2 w-fit rounded-md text-xs flex items-center justify-center bg-primary text-white">
                 {Math.round(
                   (product.regularPrice - product.salesPrice) /
                     product.regularPrice /

@@ -31,7 +31,7 @@ function Categories() {
     <div className="p-4 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="mb-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
+        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-3">
           Shop by Categories
         </h2>
         <p className="text-lg text-primary max-w-2xl mx-auto font-medium">
@@ -40,7 +40,7 @@ function Categories() {
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {categories.length === 0 ? (
           <p className="text-center text-gray-500 col-span-full">
             No categories found.
@@ -50,7 +50,7 @@ function Categories() {
             <Link
               key={category.id}
               to={`/category/${category.id}`}
-              className="group relative rounded-xl overflow-hidden h-80 shadow-md hover:shadow-xl transition-all duration-300"
+              className="group relative rounded-xl overflow-hidden h-60  shadow-md hover:shadow-xl transition-all duration-300"
             >
               {/* Background blur effect */}
               <div className="absolute inset-0 bg-gray-100 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
