@@ -15,8 +15,8 @@ export default defineConfig({
     strictPort: true,
     port: process.env.APP_PORT ? parseInt(process.env.APP_PORT, 10) : undefined,
     cors: {
-      origin: ['https://e-commerce-frontend-kj3t.onrender.com']
-    }
+      origin: ['https://e-commerce-frontend-kj3t.onrender.com'],
+    },
   },
   test: {
     globals: true,
