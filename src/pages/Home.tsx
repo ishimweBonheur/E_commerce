@@ -27,12 +27,11 @@ function Home() {
       <div className="flex w-full h-auto py-8">
         <BannerSection />
       </div>
-      <div className='flex flex-row justify-center items-center bg-white pb-10 pt-2'>
+      <div className="flex flex-row justify-center items-center bg-white pb-10 pt-2">
         <FeaturedSection />
       </div>
       <div>
-
-      <BestSellerSection />
+        <BestSellerSection />
       </div>
 
       <div className="flex flex-row justify-center items-center  bg-white pb-10 pt-2">
