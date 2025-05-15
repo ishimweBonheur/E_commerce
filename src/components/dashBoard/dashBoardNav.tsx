@@ -69,7 +69,10 @@ function DashNavbar() {
                   {user.userType?.name}
                 </span>
               </div>
-              <FaAngleDown size="15" className="text-gray-500 hidden lg:block" />
+              <FaAngleDown
+                size="15"
+                className="text-gray-500 hidden lg:block"
+              />
             </button>
 
             {toggleProfileMenu && (
