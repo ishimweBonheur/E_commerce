@@ -11,11 +11,12 @@ dotenv.config();
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true,
+    host: '0.0.0.0',
     strictPort: true,
     port: process.env.APP_PORT ? parseInt(process.env.APP_PORT, 10) : undefined,
     cors: {
-      origin: ['https://e-commerce-frontend-kj3t.onrender.com'],
+      origin: true,
+      credentials: true
     },
   },
   test: {
