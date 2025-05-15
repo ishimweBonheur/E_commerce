@@ -207,10 +207,17 @@ function DashboardSideNav() {
       >
         <AiOutlineMenu className="text-2xl" />
       </button>
+      {/* Overlay for mobile */}
+      {isVisible && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={toggleSidebar}
+        />
+      )}
       <aside
-        className={`h-[calc(100vh-4rem)] w-[200px] bg-white fixed left-0 z-40 border-r border-gray-100 ${
-          isVisible ? 'block' : 'hidden'
-        } lg:block`}
+        className={`h-[calc(100vh-4rem)] w-[200px] bg-white fixed left-0 z-40 border-r border-gray-100 transition-transform duration-300 ease-in-out ${
+          isVisible ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        }`}
       >
         <nav className="h-full flex flex-col">
           <div className="lg:hidden flex justify-end p-3">
@@ -223,7 +230,7 @@ function DashboardSideNav() {
               <AiOutlineClose className="text-xl" />
             </button>
           </div>
-          <ul className="flex-1 px-3 py-4 space-y-1">
+          <ul className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             {sideBarItems.map((item) => {
               if (item.role.includes(Role!)) {
                 return <SideBarItem Role={Role!} key={item.name} item={item} />;

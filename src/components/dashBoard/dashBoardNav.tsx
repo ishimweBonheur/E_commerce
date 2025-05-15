@@ -22,8 +22,8 @@ function DashNavbar() {
   };
 
   return (
-    <div className="relative flex items-center justify-between w-full h-16 px-6 bg-white border-b border-gray-100">
-      <div className="flex items-center gap-2">
+    <div className="relative flex items-center justify-between w-full h-16 px-4 lg:px-6 bg-white border-b border-gray-100">
+      <div className="flex items-center gap-2 ml-10">
         <img src="/logo.png" alt="logo" className="w-8 h-8" />
         <h2 className="text-gray-800 font-bold">DOB</h2>
         <div className="hidden lg:block ml-8">
@@ -31,14 +31,15 @@ function DashNavbar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-2 lg:gap-6">
         <div className="relative">
           <button
             type="button"
             className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+            aria-label="Notifications"
           >
             <FaBell size="20" />
-            <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">
+            <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">
               1
             </div>
           </button>
@@ -48,9 +49,10 @@ function DashNavbar() {
           <div className="relative">
             <button
               type="button"
-              className="flex items-center gap-3 hover:bg-gray-50 p-2 rounded-lg transition-colors"
+              className="flex items-center gap-2 hover:bg-gray-50 p-2 rounded-lg transition-colors"
               onClick={handleProfileMenuToggle}
               onKeyPress={handleKeyPress}
+              aria-label="Profile menu"
             >
               <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-gray-100">
                 <img
@@ -67,7 +69,7 @@ function DashNavbar() {
                   {user.userType?.name}
                 </span>
               </div>
-              <FaAngleDown size="15" className="text-gray-500" />
+              <FaAngleDown size="15" className="text-gray-500 hidden lg:block" />
             </button>
 
             {toggleProfileMenu && (

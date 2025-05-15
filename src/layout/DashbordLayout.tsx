@@ -8,13 +8,11 @@ function DashboardLayout() {
       <div className="fixed bg-white top-0 left-0 right-0 z-50 shadow-sm">
         <Navbar />
       </div>
-      <div className="flex">
-        <div className="fixed left-0 top-16 h-[calc(100vh-4rem)]">
-          <DashboardSideNav />
-        </div>
-        <div className="flex-1 ml-[200px] mt-16 p-6">
+      <div className="flex pt-16">
+        <DashboardSideNav />
+        <main className="flex-1 lg:ml-[200px] p-4 lg:p-6 w-full">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );
