@@ -35,10 +35,10 @@ function PopularSection() {
               <button
                 key={section.id}
                 onClick={() => setActiveSection(section.id as SectionType)}
-                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
                   activeSection === section.id
-                    ? 'bg-orange-600 text-white shadow-lg shadow-orange-200 scale-105'
-                    : 'bg-white text-gray-600 hover:bg-orange-50'
+                    ? 'border-b border-b-3 border-orange-600  '
+                    : 'bg-white text-gray-600 hover:border-b border-b-3 border-orange-50'
                 }`}
               >
                 {section.title}
