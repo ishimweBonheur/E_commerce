@@ -14,7 +14,6 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: process.env.APP_PORT ? parseInt(process.env.APP_PORT, 10) : undefined,
-
   },
   test: {
     globals: true,
