@@ -25,8 +25,8 @@ function PopularSection() {
   ];
 
   return (
-    <section className="bg-gray-50/50 py-8">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+    <section className="bg-gray-50/50 py-8 max-w-7xl">
+      <div className=" mx-auto ">
         <BannerAD />
         <div className="mt-8">
           {/* Section Tabs */}

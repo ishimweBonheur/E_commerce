@@ -31,7 +31,7 @@ function BestSellerSection() {
   const latestProducts = products.slice(0, 4);
 
   return (
-    <div className="w-full mx-auto my-8 md:mt-12 px-16">
+    <div className=" max-w-7xl  w-full mx-auto  ">
       <SectionHeader
         title="Best Seller"
         description="Don't miss this opportunity at a special discount just for this week."
