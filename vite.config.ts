@@ -16,7 +16,7 @@ export default defineConfig({
     port: process.env.APP_PORT ? parseInt(process.env.APP_PORT, 10) : undefined,
     cors: {
       origin: true,
-      credentials: true
+      credentials: true,
     },
   },
   test: {
