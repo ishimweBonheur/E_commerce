@@ -8,7 +8,6 @@ import { FaEnvelope, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 function EmailConfirmation() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>(
     'loading'
   );
@@ -19,7 +18,6 @@ function EmailConfirmation() {
     const confirmEmail = async () => {
       if (!token) {
         setStatus('error');
-        setIsLoading(false);
         setMessage('Invalid confirmation link');
         showErrorToast('Invalid confirmation link');
         setTimeout(() => navigate('/signin'), 3000);
@@ -45,7 +43,6 @@ function EmailConfirmation() {
 
         if (response.data.success) {
           setStatus('success');
-          setIsLoading(false);
           setMessage('Email confirmed successfully!');
           showSuccessToast('Email confirmed successfully!');
           setTimeout(() => navigate('/signin'), 3000);
@@ -53,7 +50,6 @@ function EmailConfirmation() {
       } catch (error: any) {
         console.error('Email confirmation error:', error.response?.data);
         setStatus('error');
-        setIsLoading(false);
         const errorMessage =
           error.response?.data?.message || 'Failed to confirm email';
         setMessage(errorMessage);
