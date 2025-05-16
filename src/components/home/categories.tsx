@@ -72,7 +72,7 @@ function Categories() {
               </div>
 
               {/* Category content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20">
                 {/* Glowing accent bar */}
                 <div className="w-12 h-1 bg-primary mb-3 rounded-full group-hover:w-16 transition-all duration-300"></div>
 
