@@ -8,9 +8,7 @@ import { FaEnvelope, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 function EmailConfirmation() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState<'loading' | 'success' | 'error'>(
-    'loading'
-  );
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('');
   const token = searchParams.get('token');
 
