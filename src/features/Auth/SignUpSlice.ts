@@ -25,14 +25,18 @@ const apiUrl = `${import.meta.env.VITE_BASE_URL}/user/register`;
 
 export const registerUser = createAsyncThunk(
   'signUp/registerUser',
-  async (userData: Omit<SignUpState, 'loading' | 'error'>, { rejectWithValue }) => {
+  async (
+    userData: Omit<SignUpState, 'loading' | 'error'>,
+    { rejectWithValue }
+  ) => {
     try {
       console.log('Registration payload:', userData);
       const response = await axios.post(apiUrl, userData);
       return response.data;
     } catch (error: any) {
       console.log('Registration error:', error.response?.data);
-      const errorMessage = error.response?.data?.message || error.message || 'Registration failed';
+      const errorMessage =
+        error.response?.data?.message || error.message || 'Registration failed';
       showErrorToast(errorMessage);
       return rejectWithValue(errorMessage);
     }
@@ -73,7 +77,7 @@ const signUpSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string || 'Something went wrong';
+        state.error = (action.payload as string) || 'Something went wrong';
         showErrorToast(state.error);
       });
   },

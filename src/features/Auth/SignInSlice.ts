@@ -101,13 +101,14 @@ export const loginUser = createAsyncThunk<LoginResponse, Credentials>(
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
       });
       showSuccessToast(response.data.message);
       return response.data;
     } catch (error: any) {
       console.log('Login error:', error.response?.data);
-      const errorMessage = error.response?.data?.message || 'Invalid credentials';
+      const errorMessage =
+        error.response?.data?.message || 'Invalid credentials';
       showErrorToast(errorMessage);
       return thunkAPI.rejectWithValue({ message: errorMessage });
     }
@@ -119,12 +120,16 @@ export const twoFactorverify = createAsyncThunk(
   async ({ id, codes }: Arguments, thunkAPI) => {
     try {
       const url = `${import.meta.env.VITE_BASE_URL}/user/verify2FA/${id}`;
-      const response = await axios.post(url, { code: codes }, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        url,
+        { code: codes },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
       showSuccessToast('Vendor Logged in successfully');
       return response.data;
     } catch (error: any) {
@@ -233,7 +238,8 @@ const signInSlice = createSlice({
         loading: false,
         error: action.payload?.message || 'Login failed',
         message: null,
-        needsVerification: action.payload?.message?.includes('verify your email') || false,
+        needsVerification:
+          action.payload?.message?.includes('verify your email') || false,
       };
     });
     // 2FA reducers

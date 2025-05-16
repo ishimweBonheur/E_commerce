@@ -30,11 +30,11 @@ function SignUp() {
     const { confirmPassword, ...registrationData } = values;
     const formattedData = {
       ...registrationData,
-      userType: registrationData.userType as 'Vendor' | 'Buyer'
+      userType: registrationData.userType as 'Vendor' | 'Buyer',
     };
-    
+
     console.log('Submitting registration data:', formattedData);
-    
+
     dispatch(registerUser(formattedData))
       .then(() => {
         actions.setSubmitting(false);
