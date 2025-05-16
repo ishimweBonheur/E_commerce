@@ -34,6 +34,7 @@ import Customer from '@/pages/customer';
 import Category from '@/components/dashBoard/Category';
 import CategoryProducts from '@/pages/CategoryProducts';
 import EmailConfirmation from '@/pages/EmailConfirmation';
+import Categories from '@/pages/Categories';
 import { lazy, Suspense } from 'react';
 
 const Features = lazy(() => import('@/pages/Features'));
@@ -49,6 +50,7 @@ function AppRoutes() {
       <Route element={<HomeLayout />}>
         <Route index path="/" element={<Home />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="categories" element={<Categories />} />
         <Route path="new-arrivals" element={<NewArrivals />} />
         <Route path="view-collection" element={<ViewCollection />} />
         <Route path="browse-coats" element={<BrowseCoats />} />

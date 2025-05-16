@@ -99,9 +99,9 @@ function Categories() {
         <div className="mt-12 text-center">
           <Link
             to="/categories"
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            className="inline-flex items-center   hover:text-primary/90  text-orange-700  transition-all  hover:-translate-y-0.5"
           >
-            View All Categories
+            View All
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2"
