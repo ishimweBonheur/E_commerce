@@ -3,6 +3,10 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { showErrorToast, showSuccessToast } from '@/utils/ToastConfig';
 
+// Configure axios defaults
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
 interface User {
   id: number;
   firstName: string;
@@ -93,13 +97,19 @@ export const loginUser = createAsyncThunk<LoginResponse, Credentials>(
   'signIn/loginUser',
   async (credentials: Credentials, thunkAPI) => {
     try {
-      const response = await axios.post(apiUrl, credentials);
+      const response = await axios.post(apiUrl, credentials, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       showSuccessToast(response.data.message);
       return response.data;
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'An error occurred';
+      console.log('Login error:', error.response?.data);
+      const errorMessage = error.response?.data?.message || 'Invalid credentials';
       showErrorToast(errorMessage);
-      return thunkAPI.rejectWithValue(errorMessage);
+      return thunkAPI.rejectWithValue({ message: errorMessage });
     }
   }
 );
@@ -109,13 +119,19 @@ export const twoFactorverify = createAsyncThunk(
   async ({ id, codes }: Arguments, thunkAPI) => {
     try {
       const url = `${import.meta.env.VITE_BASE_URL}/user/verify2FA/${id}`;
-      const response = await axios.post(url, { code: codes });
+      const response = await axios.post(url, { code: codes }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       showSuccessToast('Vendor Logged in successfully');
       return response.data;
     } catch (error: any) {
-      showErrorToast(error.response.data.error);
+      console.log('2FA error:', error.response?.data);
+      showErrorToast(error.response?.data?.error || 'Verification failed');
       return thunkAPI.rejectWithValue(
-        error.response?.data || 'An error occurred'
+        error.response?.data || { message: 'An error occurred' }
       );
     }
   }
@@ -215,9 +231,9 @@ const signInSlice = createSlice({
       return {
         ...state,
         loading: false,
-        error: action.payload.message,
+        error: action.payload?.message || 'Login failed',
         message: null,
-        needsVerification: action.payload.message.includes('verify your email'),
+        needsVerification: action.payload?.message?.includes('verify your email') || false,
       };
     });
     // 2FA reducers

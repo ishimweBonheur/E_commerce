@@ -7,7 +7,7 @@ interface SignUpState {
   lastName: string;
   email: string;
   password: string;
-  userType: 'vendor' | 'buyer';
+  userType: 'Vendor' | 'Buyer';
   loading: boolean;
   error: string | null;
 }
@@ -17,7 +17,7 @@ const initialState: SignUpState = {
   lastName: '',
   email: '',
   password: '',
-  userType: 'buyer',
+  userType: 'Buyer',
   loading: false,
   error: null,
 };
@@ -25,9 +25,17 @@ const apiUrl = `${import.meta.env.VITE_BASE_URL}/user/register`;
 
 export const registerUser = createAsyncThunk(
   'signUp/registerUser',
-  async (userData: Omit<SignUpState, 'loading' | 'error'>) => {
-    const response = await axios.post(apiUrl, userData);
-    return response.data;
+  async (userData: Omit<SignUpState, 'loading' | 'error'>, { rejectWithValue }) => {
+    try {
+      console.log('Registration payload:', userData);
+      const response = await axios.post(apiUrl, userData);
+      return response.data;
+    } catch (error: any) {
+      console.log('Registration error:', error.response?.data);
+      const errorMessage = error.response?.data?.message || error.message || 'Registration failed';
+      showErrorToast(errorMessage);
+      return rejectWithValue(errorMessage);
+    }
   }
 );
 
@@ -47,7 +55,7 @@ const signUpSlice = createSlice({
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
-    setUserType: (state, action: PayloadAction<'vendor' | 'buyer'>) => {
+    setUserType: (state, action: PayloadAction<'Vendor' | 'Buyer'>) => {
       state.userType = action.payload;
     },
   },
@@ -65,7 +73,7 @@ const signUpSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Something went wrong';
+        state.error = action.payload as string || 'Something went wrong';
         showErrorToast(state.error);
       });
   },

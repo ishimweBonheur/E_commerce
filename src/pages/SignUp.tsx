@@ -14,7 +14,7 @@ interface FormValues {
   email: string;
   password: string;
   confirmPassword: string;
-  userType: 'vendor' | 'buyer';
+  userType: 'Vendor' | 'Buyer';
 }
 
 function SignUp() {
@@ -26,7 +26,16 @@ function SignUp() {
     values: FormValues,
     actions: FormikHelpers<FormValues>
   ) => {
-    dispatch(registerUser(values))
+    // Remove confirmPassword and ensure userType is properly typed
+    const { confirmPassword, ...registrationData } = values;
+    const formattedData = {
+      ...registrationData,
+      userType: registrationData.userType as 'Vendor' | 'Buyer'
+    };
+    
+    console.log('Submitting registration data:', formattedData);
+    
+    dispatch(registerUser(formattedData))
       .then(() => {
         actions.setSubmitting(false);
         navigate('/signIn');
@@ -109,7 +118,7 @@ function SignUp() {
             email: '',
             password: '',
             confirmPassword: '',
-            userType: 'buyer',
+            userType: 'Buyer',
           }}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
@@ -169,8 +178,8 @@ function SignUp() {
                 />
               </div>
               <div className="flex flex-col items-left justify-between text-gray-600 text-sm md:text-md">
-                {renderField('buyer', 'userType', 'I am a customer', 'radio')}
-                {renderField('vendor', 'userType', 'I am a vendor', 'radio')}
+                {renderField('Buyer', 'userType', 'I am a customer', 'radio')}
+                {renderField('Vendor', 'userType', 'I am a vendor', 'radio')}
                 <ErrorMessage
                   name="userType"
                   component="div"
