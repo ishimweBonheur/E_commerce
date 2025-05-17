@@ -137,7 +137,7 @@ function AppRoutes() {
       <Route path="/forgot-password" element={<PasswordResetRequestForm />} />
       <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
       <Route path="/confirm" element={<EmailConfirmation />} />
-      <Route path="/api/v1/user/confirm" element={<EmailConfirmation />} />
+      <Route path="/api/v1/user/confirm/:token" element={<EmailConfirmation />} />
       <Route path="/confirm-email" element={<EmailConfirmation />} />
 
       <Route
