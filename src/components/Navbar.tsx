@@ -3,7 +3,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LuShoppingCart } from 'react-icons/lu';
-import { FiHeart} from 'react-icons/fi';
+import { FiHeart } from 'react-icons/fi';
 import { FaAngleDown, FaRegUserCircle } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import HSButton from './form/HSButton';
@@ -40,7 +40,7 @@ function Navbar() {
         {/* Logo/Brand */}
         <div className="flex items-center gap-3">
           <div className="text-white  transition-all duration-300">
-          <img
+            <img
               src="/iconcart.svg"
               alt=""
               className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
@@ -134,7 +134,8 @@ function Navbar() {
 
               {toggleProfileMenu && (
                 <div className="absolute top-14 right-0 bg-white shadow-xl rounded-xl w-56 py-2 z-50 border border-gray-100">
-                  {(user?.userType?.name === 'Admin' || user?.userType?.name === 'Vendor') && (
+                  {(user?.userType?.name === 'Admin' ||
+                    user?.userType?.name === 'Vendor') && (
                     <div
                       className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer transition-colors"
                       onClick={() => {

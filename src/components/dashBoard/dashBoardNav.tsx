@@ -38,21 +38,21 @@ function DashNavbar() {
       }
 
       let url = `${import.meta.env.VITE_BASE_URL}/notifications`;
-      
+
       // Add vendor-specific endpoint only for vendors
       if (user?.userType?.name === 'Vendor') {
         url += `/vendor/${user.id}`;
       }
       // Admin gets all notifications by default
-      
+
       console.log('Fetching notifications from:', url);
-      
+
       const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       if (!response.data.notification) {
         console.log('No notification data in response:', response.data);
         return;
@@ -63,7 +63,10 @@ function DashNavbar() {
       ).length;
       setUnreadCount(unread);
     } catch (error: any) {
-      console.error('Error fetching notifications:', error.response?.data || error.message);
+      console.error(
+        'Error fetching notifications:',
+        error.response?.data || error.message
+      );
       showErrorToast('Failed to fetch notifications');
     }
   };
@@ -81,8 +84,7 @@ function DashNavbar() {
           <button
             onClick={handleMobileMenuToggle}
             className="lg:hidden p-2 hover:bg-gray-50 rounded-lg"
-          >
-          </button>
+          ></button>
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/iconcart.svg"

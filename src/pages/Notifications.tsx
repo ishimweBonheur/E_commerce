@@ -23,28 +23,30 @@ function Notifications() {
     try {
       setLoading(true);
       let url = `${import.meta.env.VITE_BASE_URL}/notifications`;
-      
+
       // Add vendor-specific endpoint only for vendors
       if (user?.userType?.name === 'Vendor') {
         url += `/vendor/${user.id}`;
       }
       // Admin gets all notifications by default, no need for special endpoint
-      
+
       const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       if (!response.data.notification) {
         console.log('No notification data in response:', response.data);
         return;
       }
-      
+
       setNotifications(response.data.notification);
     } catch (error: any) {
-      console.error('Error fetching notifications:', error.response?.data || error.message);
-
+      console.error(
+        'Error fetching notifications:',
+        error.response?.data || error.message
+      );
     } finally {
       setLoading(false);
     }
@@ -132,7 +134,9 @@ function Notifications() {
                   </p>
                 </div>
                 <button
-                  onClick={() => deleteNotification(notification.notification_id)}
+                  onClick={() =>
+                    deleteNotification(notification.notification_id)
+                  }
                   className="ml-4 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                 >
                   <FaTrash />
@@ -146,4 +150,4 @@ function Notifications() {
   );
 }
 
-export default Notifications; 
+export default Notifications;

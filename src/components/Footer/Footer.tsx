@@ -57,7 +57,11 @@ function Footer() {
               alt=""
               className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
             />
-            <Link to="/" className="font-semibold text-2xl text-primary" onClick={scroolUp}>
+            <Link
+              to="/"
+              className="font-semibold text-2xl text-primary"
+              onClick={scroolUp}
+            >
               ShopEase
             </Link>
           </div>
