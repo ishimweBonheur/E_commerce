@@ -78,11 +78,14 @@ function Notifications() {
   const deleteAllNotifications = async () => {
     try {
       const endpoint = user?.userType?.name === 'Admin' ? 'admin' : 'vendor';
-      await axios.delete(`${import.meta.env.VITE_BASE_URL}/notification/${endpoint}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/notification/${endpoint}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setNotifications([]);
       showSuccessToast('All notifications deleted successfully');
     } catch (error) {
@@ -135,8 +138,12 @@ function Notifications() {
             >
               <div className="flex justify-between items-start">
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-800">{notification.message_title}</h3>
-                  <p className="text-gray-800 whitespace-pre-line mt-2">{notification.message_content}</p>
+                  <h3 className="font-semibold text-gray-800">
+                    {notification.message_title}
+                  </h3>
+                  <p className="text-gray-800 whitespace-pre-line mt-2">
+                    {notification.message_content}
+                  </p>
                   <p className="text-sm text-gray-500 mt-2">
                     {new Date(notification.createdAt).toLocaleString()}
                   </p>
