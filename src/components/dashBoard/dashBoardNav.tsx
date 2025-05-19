@@ -5,7 +5,6 @@ import HSButton from '@/components/form/HSButton';
 import { logout } from '@/features/Auth/SignInSlice';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import axios from 'axios';
-import { showErrorToast } from '@/utils/ToastConfig';
 
 function DashNavbar() {
   const dispatch = useAppDispatch();
@@ -37,13 +36,12 @@ function DashNavbar() {
         return;
       }
 
-      let url = `${import.meta.env.VITE_BASE_URL}/notifications`;
+      let url = `${import.meta.env.VITE_BASE_URL}/notification`;
 
       // Add vendor-specific endpoint only for vendors
       if (user?.userType?.name === 'Vendor') {
         url += `/vendor/${user.id}`;
       }
-      // Admin gets all notifications by default
 
       console.log('Fetching notifications from:', url);
 
@@ -67,7 +65,6 @@ function DashNavbar() {
         'Error fetching notifications:',
         error.response?.data || error.message
       );
-      showErrorToast('Failed to fetch notifications');
     }
   };
 

@@ -7,10 +7,14 @@ import { showSuccessToast, showErrorToast } from '@/utils/ToastConfig';
 
 interface Notification {
   notification_id: number;
-  message: string;
-  created_at: string;
-  vendor_id?: number;
-  is_read: boolean;
+  message_title: string;
+  message_content: string;
+  product_id: number;
+  vendor_id: number;
+  vendor_email: string;
+  isRead: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 function Notifications() {
@@ -22,13 +26,14 @@ function Notifications() {
   const fetchNotifications = async () => {
     try {
       setLoading(true);
-      let url = `${import.meta.env.VITE_BASE_URL}/notifications`;
+      let url = `${import.meta.env.VITE_BASE_URL}/notification`;
 
-      // Add vendor-specific endpoint only for vendors
+      // Add role-specific endpoint
       if (user?.userType?.name === 'Vendor') {
         url += `/vendor/${user.id}`;
+      } else if (user?.userType?.name === 'Admin') {
+        url += '/admin'; // Admin gets all notifications
       }
-      // Admin gets all notifications by default, no need for special endpoint
 
       const response = await axios.get(url, {
         headers: {
@@ -54,8 +59,9 @@ function Notifications() {
 
   const deleteNotification = async (id: number) => {
     try {
+      const endpoint = user?.userType?.name === 'Admin' ? 'admin' : 'vendor';
       await axios.delete(
-        `${import.meta.env.VITE_BASE_URL}/notifications/${id}`,
+        `${import.meta.env.VITE_BASE_URL}/notification/${endpoint}/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -71,7 +77,8 @@ function Notifications() {
 
   const deleteAllNotifications = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BASE_URL}/notifications`, {
+      const endpoint = user?.userType?.name === 'Admin' ? 'admin' : 'vendor';
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/notification/${endpoint}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -121,16 +128,17 @@ function Notifications() {
             <div
               key={notification.notification_id}
               className={`p-4 rounded-lg border ${
-                notification.is_read
+                notification.isRead
                   ? 'bg-white border-gray-200'
                   : 'bg-blue-50 border-blue-200'
               }`}
             >
               <div className="flex justify-between items-start">
                 <div className="flex-1">
-                  <p className="text-gray-800">{notification.message}</p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {new Date(notification.created_at).toLocaleString()}
+                  <h3 className="font-semibold text-gray-800">{notification.message_title}</h3>
+                  <p className="text-gray-800 whitespace-pre-line mt-2">{notification.message_content}</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {new Date(notification.createdAt).toLocaleString()}
                   </p>
                 </div>
                 <button
