@@ -11,7 +11,6 @@ import Button from '@/components/form/Button';
 import HSInput from '@/components/form/HSInput';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { loginUser, socialLogin } from '@/features/Auth/SignInSlice';
-import { showSuccessToast } from '@/utils/ToastConfig';
 
 interface MyFormValues {
   email: string;
@@ -63,10 +62,8 @@ function SignIn() {
       navigate(`/verify-2fa/${id}/${email}`);
     } else if (token) {
       if (role === 'Admin') {
-        showSuccessToast('Admin Logged in Successfully');
         navigate('/dashboard');
       } else {
-        showSuccessToast('Buyer Logged in Successfully');
         navigate('/');
       }
     }
@@ -74,7 +71,7 @@ function SignIn() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-white p-4">
-      <div className="w-full max-w-md p-6 shadow-lg border border-gray-200 rounded-md">
+      <div className="w-full max-w-xl p-6 shadow-lg border border-gray-200 rounded-md">
         <h1 data-testid="title" className="text-center font-bold text-3xl mb-5">
           Sign in
         </h1>

@@ -33,8 +33,9 @@ import TableUserRole from '@/components/dashBoard/UserRole';
 import Customer from '@/pages/customer';
 import Category from '@/components/dashBoard/Category';
 import CategoryProducts from '@/pages/CategoryProducts';
-import EmailConfirmation from '@/pages/EmailConfirmation';
+// import EmailConfirmation from '@/pages/EmailConfirmation';
 import Categories from '@/pages/Categories';
+import Notifications from '@/pages/Notifications';
 import { lazy, Suspense } from 'react';
 
 const Features = lazy(() => import('@/pages/Features'));
@@ -136,12 +137,12 @@ function AppRoutes() {
       <Route path="/verify-2fa/:id/:email" element={<TwoFactorAuthForm />} />
       <Route path="/forgot-password" element={<PasswordResetRequestForm />} />
       <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
-      <Route path="/confirm" element={<EmailConfirmation />} />
+      {/* <Route path="/confirm" element={<EmailConfirmation />} />
       <Route
         path="/api/v1/user/confirm/:token"
         element={<EmailConfirmation />}
       />
-      <Route path="/confirm-email" element={<EmailConfirmation />} />
+      <Route path="/confirm-email" element={<EmailConfirmation />} /> */}
 
       <Route
         path="/dashboard"
@@ -171,7 +172,9 @@ function AppRoutes() {
         <Route index path="/dashboard/addCoupons/" element={<AddCoupon />} />
         <Route path="/dashboard/editCoupon/:id" element={<EditCoupon />} />
         <Route index path="/dashboard/userRole/" element={<TableUserRole />} />
+        <Route path="/dashboard/notifications" element={<Notifications />} />
       </Route>
+
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

@@ -1,0 +1,149 @@
+import { useEffect, useState } from 'react';
+import { useAppSelector } from '@/app/hooks';
+import axios from 'axios';
+import { FaTrash, FaBell } from 'react-icons/fa';
+import BeatLoader from 'react-spinners/BeatLoader';
+import { showSuccessToast, showErrorToast } from '@/utils/ToastConfig';
+
+interface Notification {
+  notification_id: number;
+  message: string;
+  created_at: string;
+  vendor_id?: number;
+  is_read: boolean;
+}
+
+function Notifications() {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [loading, setLoading] = useState(true);
+  const user = useAppSelector((state) => state.signIn.user);
+  const token = useAppSelector((state) => state.signIn.token);
+
+  const fetchNotifications = async () => {
+    try {
+      setLoading(true);
+      let url = `${import.meta.env.VITE_BASE_URL}/notifications`;
+      
+      // Add vendor-specific endpoint only for vendors
+      if (user?.userType?.name === 'Vendor') {
+        url += `/vendor/${user.id}`;
+      }
+      // Admin gets all notifications by default, no need for special endpoint
+      
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      if (!response.data.notification) {
+        console.log('No notification data in response:', response.data);
+        return;
+      }
+      
+      setNotifications(response.data.notification);
+    } catch (error: any) {
+      console.error('Error fetching notifications:', error.response?.data || error.message);
+
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteNotification = async (id: number) => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/notifications/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setNotifications(notifications.filter((n) => n.notification_id !== id));
+      showSuccessToast('Notification deleted successfully');
+    } catch (error) {
+      showErrorToast('Failed to delete notification');
+    }
+  };
+
+  const deleteAllNotifications = async () => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/notifications`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setNotifications([]);
+      showSuccessToast('All notifications deleted successfully');
+    } catch (error) {
+      showErrorToast('Failed to delete all notifications');
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <BeatLoader color="#6D31ED" size={10} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto p-4">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">Notifications</h1>
+        {notifications.length > 0 && (
+          <button
+            onClick={deleteAllNotifications}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+          >
+            <FaTrash />
+            Clear All
+          </button>
+        )}
+      </div>
+
+      {notifications.length === 0 ? (
+        <div className="text-center py-12">
+          <FaBell className="mx-auto text-gray-400 text-4xl mb-4" />
+          <p className="text-gray-500">No notifications yet</p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {notifications.map((notification) => (
+            <div
+              key={notification.notification_id}
+              className={`p-4 rounded-lg border ${
+                notification.is_read
+                  ? 'bg-white border-gray-200'
+                  : 'bg-blue-50 border-blue-200'
+              }`}
+            >
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <p className="text-gray-800">{notification.message}</p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(notification.created_at).toLocaleString()}
+                  </p>
+                </div>
+                <button
+                  onClick={() => deleteNotification(notification.notification_id)}
+                  className="ml-4 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                >
+                  <FaTrash />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Notifications; 

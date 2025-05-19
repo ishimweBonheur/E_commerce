@@ -3,7 +3,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LuShoppingCart } from 'react-icons/lu';
-import { FiHeart, FiShoppingBag } from 'react-icons/fi';
+import { FiHeart} from 'react-icons/fi';
 import { FaAngleDown, FaRegUserCircle } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import HSButton from './form/HSButton';
@@ -39,8 +39,12 @@ function Navbar() {
 
         {/* Logo/Brand */}
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-primary rounded-xl text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
-            <FiShoppingBag size={24} />
+          <div className="text-white  transition-all duration-300">
+          <img
+              src="/iconcart.svg"
+              alt=""
+              className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+            />
           </div>
           <h2 className="text-2xl font-bold text-primary hidden sm:block tracking-tight">
             ShopEase
@@ -130,23 +134,36 @@ function Navbar() {
 
               {toggleProfileMenu && (
                 <div className="absolute top-14 right-0 bg-white shadow-xl rounded-xl w-56 py-2 z-50 border border-gray-100">
-                  {[
-                    {
-                      icon: <FaRegUserCircle size={16} />,
-                      text: 'Edit Profile',
-                    },
-                    { icon: <FiHeart size={16} />, text: 'Wishlist' },
-                    { icon: <LuShoppingCart size={16} />, text: 'Orders' },
-                  ].map((item, index) => (
+                  {(user?.userType?.name === 'Admin' || user?.userType?.name === 'Vendor') && (
                     <div
-                      key={index}
                       className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer transition-colors"
+                      onClick={() => {
+                        setToggleProfileMenu(false);
+                        navigate('/dashboard');
+                      }}
                     >
-                      <span className="text-gray-500">{item.icon}</span>
-                      <span>{item.text}</span>
+                      <span className="text-gray-500">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect x="3" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="14" width="7" height="7"></rect>
+                          <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                      </span>
+                      <span>Dashboard</span>
                     </div>
-                  ))}
-                  <div className="border-t border-gray-100 mt-1 pt-1">
+                  )}
+                  <div className="border-gray-100 mt-1 pt-1">
                     <div
                       className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer transition-colors"
                       onClick={() => {

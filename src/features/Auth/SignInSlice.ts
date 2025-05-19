@@ -267,7 +267,6 @@ const signInSlice = createSlice({
         ...state,
         loading: false,
         token: newToken,
-        message: 'Vendor Logged in successfully',
         error: null,
         user: decodedUser,
       };
