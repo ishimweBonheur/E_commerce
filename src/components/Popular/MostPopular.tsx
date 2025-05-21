@@ -64,7 +64,7 @@ function MostPopular() {
               .map((_, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center p-4 rounded-xl bg-red-50/80 text-red-600 text-sm"
+                  className="flex items-center justify-center p-4 rounded-xl bg-gray100 text-gray600 text-sm"
                 >
                   Failed to load products. Please try again.
                 </div>
@@ -92,8 +92,8 @@ function MostPopular() {
                   onClick={() => setStart(index * itemsPerPage)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     Math.floor(start / itemsPerPage) === index
-                      ? 'bg-primary w-4'
-                      : 'bg-gray-300 hover:bg-orange-300'
+                      ? 'bg-gray600 w-4'
+                      : 'bg-gray300 hover:bg-gray400'
                   }`}
                   aria-label={`Go to page ${index + 1}`}
                 />

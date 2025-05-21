@@ -30,7 +30,7 @@ function HSTextarea({
       onChange={onChange}
       value={value}
       rows={rows}
-      className={`${style} bg-grayLight text-black text-xs md:text-sm duration-150 w-full outline-none rounded-md border-[1px] group-hover:border-grayDark px-5 py-3`}
+      className={`${style} bg-gray50 text-gray900 text-xs md:text-sm duration-150 w-full outline-none rounded-md border border-gray200 focus:border-gray400 group-hover:border-gray300 px-5 py-3`}
     />
   );
 }

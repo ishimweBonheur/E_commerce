@@ -302,80 +302,80 @@ function Shop() {
                   <input
                     type="checkbox"
                     checked={ratings.includes(5)}
-                    className="text-primary"
+                    className="text-gray600"
                     value={5}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(4)}
                     value={4}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(3)}
                     value={3}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(2)}
                     value={2}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(1)}
                     value={1}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
               </div>
@@ -488,81 +488,81 @@ function Shop() {
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(5)}
                     value={5}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(4)}
                     value={4}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(3)}
                     value={3}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(2)}
                     value={2}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="text-primary"
+                    className="text-gray600"
                     checked={ratings.includes(1)}
                     value={1}
                     onChange={handleRatingChange}
                   />
                   <div className="flex items-center gap-1">
-                    <FaStar color="#F3C63F" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
-                    <FaStar color="#DEE1E6" />
+                    <FaStar color="#4B5563" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
+                    <FaStar color="#D1D5DB" />
                   </div>
                 </div>
               </div>

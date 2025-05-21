@@ -133,10 +133,10 @@ function Checkout() {
       <div className="w-7/12 pr-4">
         <h2 className="text-2xl font-bold py-4">Delivery Address</h2>
         <div className="flex flex-col gap-6 py-4 w-full">
-          <div className="rounded-md p-4 border border-gray-300">
+          <div className="rounded-md p-4 border border-gray300">
             <label
               htmlFor="card"
-              className="flex items-center w-full bg-gray-100 rounded"
+              className="flex items-center w-full bg-gray100 rounded"
             >
               <img
                 src="icons/address.svg"
@@ -144,17 +144,17 @@ function Checkout() {
                 className="w-12 mr-4 text-primary"
               />
               <input
-                className="text-gray-900 text-lg ml-1 placeholder:text-gray-500 h-full w-full outline-none bg-gray-100"
+                className="text-gray900 text-lg ml-1 placeholder:text-gray500 h-full w-full outline-none bg-gray100"
                 placeholder="Address"
                 onChange={(e) => setAddress(e.target.value)}
                 value={address}
               />
             </label>
           </div>
-          <div className="rounded-md p-4 border border-gray-300">
+          <div className="rounded-md p-4 border border-gray300">
             <label
               htmlFor="card"
-              className="flex items-center w-full bg-gray-100 rounded"
+              className="flex items-center w-full bg-gray100 rounded"
             >
               <img
                 src="icons/location.svg"
@@ -162,7 +162,7 @@ function Checkout() {
                 className="w-12 mr-4 text-primary"
               />
               <input
-                className="text-gray-900 text-lg ml-1 placeholder:text-gray-500 h-full w-full outline-none bg-gray-100"
+                className="text-gray900 text-lg ml-1 placeholder:text-gray500 h-full w-full outline-none bg-gray100"
                 placeholder="City"
                 onChange={(e) => setCity(e.target.value)}
                 value={city}
@@ -174,7 +174,7 @@ function Checkout() {
 
         <div className="mb-6">
           <button
-            className="w-full flex justify-between items-center py-6 text-xl text-gray-500 px-4 border border-gray-300 rounded-md text-left"
+            className="w-full flex justify-between items-center py-6 text-xl text-gray500 px-4 border border-gray300 rounded-md text-left"
             type="button"
             onClick={() =>
               setChosen((prev) => (prev === 'momo' ? 'nothing' : 'momo'))
@@ -185,20 +185,20 @@ function Checkout() {
           </button>
         </div>
         {chosen === 'momo' && (
-          <div className="py-6 px-4 border border-gray-300 rounded-md mb-6">
+          <div className="py-6 px-4 border border-gray300 rounded-md mb-6">
             <div className="mb">
-              <h3 className="w-full text-xl text-gray-500 rounded-md text-left">
+              <h3 className="w-full text-xl text-gray500 rounded-md text-left">
                 My Momo Number
               </h3>
               <div className="rounded-md py-4 flex flex-col gap-6">
-                <div className="rounded-md p-4 border border-gray-300">
+                <div className="rounded-md p-4 border border-gray300">
                   <label
                     htmlFor="momoNumber"
-                    className="flex items-center w-full bg-gray-100 rounded"
+                    className="flex items-center w-full bg-gray100 rounded"
                   >
                     <img src="momo.svg" alt="Momo" className="w-12 mr-4" />
                     <input
-                      className="text-gray-500 h-full w-full outline-none bg-gray-100"
+                      className="text-gray500 h-full w-full outline-none bg-gray100"
                       placeholder="078* *** *34"
                       value={momoNumber}
                       onChange={(e) => setMomoNumber(e.target.value)}
@@ -212,7 +212,7 @@ function Checkout() {
 
         <div className="mb-6">
           <button
-            className="w-full flex justify-between items-center py-6 text-xl text-gray-500 px-4 border border-gray-300 rounded-md text-left"
+            className="w-full flex justify-between items-center py-6 text-xl text-gray500 px-4 border border-gray300 rounded-md text-left"
             type="button"
             onClick={() =>
               setChosen((prev) => (prev === 'card' ? 'nothing' : 'card'))
@@ -224,15 +224,15 @@ function Checkout() {
         </div>
 
         {chosen === 'card' && (
-          <div className="py-6 px-4 border border-gray-300 rounded-md">
+          <div className="py-6 px-4 border border-gray300 rounded-md">
             <div className="mb-6">
-              <h3 className="w-full text-xl text-gray-500 ounded-md text-left">
+              <h3 className="w-full text-xl text-gray500 rounded-md text-left">
                 My Cards
               </h3>
               <div className="rounded-md py-4 flex flex-col gap-6">
                 {cards.map((card) => (
                   <div
-                    className="rounded-md p-4 border border-gray-300"
+                    className="rounded-md p-4 border border-gray300"
                     key={card.cardNumber}
                   >
                     <label
@@ -245,7 +245,7 @@ function Checkout() {
                           alt="Mastercard"
                           className="w-12 mr-4"
                         />
-                        <span className="text-gray-500">
+                        <span className="text-gray500">
                           {card.cardHolder} **** **** ****{' '}
                           {card.cardNumber.slice(-4)}
                         </span>
@@ -255,13 +255,13 @@ function Checkout() {
                         name="card"
                         className="h-6 w-6 radio-blue-600 hidden"
                       />
-                      <span className="h-6 w-6 rounded-full border-2 border-primary bg-blue-900"></span>
+                      <span className="h-6 w-6 rounded-full border-2 border-primary bg-gray900"></span>
                     </label>
                   </div>
                 ))}
                 <button
                   type="button"
-                  className="flex gap-6 items-center text-blue-500"
+                  className="flex gap-6 items-center text-gray600"
                   onClick={handleAdding}
                 >
                   {' '}
@@ -276,7 +276,7 @@ function Checkout() {
                       cx="19.2562"
                       cy="19.3724"
                       r="19.1493"
-                      fill="#6D31ED"
+                      fill="#374151"
                     />
                     <g clipPath="url(#clip0_492_2098)">
                       <path
@@ -312,7 +312,7 @@ function Checkout() {
                       </clipPath>
                     </defs>
                   </svg>
-                  <span className="text-xl text-gray-500 font-medium">
+                  <span className="text-xl text-gray500 font-medium">
                     Add New Card
                   </span>
                 </button>
@@ -326,7 +326,7 @@ function Checkout() {
       </div>
 
       <div className="w-5/12 flex flex-col gap-10">
-        <div className="border-gray-300 border flex justify-between p-4 rounded-md mb-4">
+        <div className="border-gray300 border flex justify-between p-4 rounded-md mb-4">
           <div className="grid grid-cols-2">
             {order.orderDetails.map((item) => (
               <img
@@ -339,17 +339,17 @@ function Checkout() {
           </div>
           <div className="flex flex-col h-full py-6 pr-6">
             <h1 className="text-2xl font-semibold">Cart Collection</h1>
-            <h2 className="text-lg text-gray-600">My saved collection</h2>
-            <h2 className="text-lg text-gray-600">For summer sales</h2>
+            <h2 className="text-lg text-gray600">My saved collection</h2>
+            <h2 className="text-lg text-gray600">For summer sales</h2>
           </div>
         </div>
 
-        <div className="border px-4 py-6 flex flex-col rounded-md mb-4 border-gray-300">
-          <h2 className="text-xl text-gray-600 pb-4">Promo Code</h2>
+        <div className="border px-4 py-6 flex flex-col rounded-md mb-4 border-gray300">
+          <h2 className="text-xl text-gray600 pb-4">Promo Code</h2>
           <div className="flex mb-4 h-16">
             <input
               type="text"
-              className="border border-gray-300 p-2 rounded-lg flex-grow mr-2 outline-none"
+              className="border border-gray300 p-2 rounded-lg flex-grow mr-2 outline-none"
               onChange={applyCoupon}
               value={coupon}
             />
@@ -364,7 +364,7 @@ function Checkout() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="19.2562" cy="19.3724" r="19.1493" fill="#6D31ED" />
+                <circle cx="19.2562" cy="19.3724" r="19.1493" fill="#374151" />
                 <g clipPath="url(#clip0_492_2098)">
                   <path
                     d="M19.7352 28.6481C24.5935 28.6481 28.5319 24.7097 28.5319 19.8514C28.5319 14.9931 24.5935 11.0547 19.7352 11.0547C14.8769 11.0547 10.9385 14.9931 10.9385 19.8514C10.9385 24.7097 14.8769 28.6481 19.7352 28.6481Z"
@@ -405,21 +405,21 @@ function Checkout() {
 
           <div className="mb-2">
             <div className="flex justify-between py-2 text-xl">
-              <span className="text-gray-600">Total</span>
+              <span className="text-gray600">Total</span>
               <span>${order.totalAmount || total}</span>
             </div>
           </div>
 
           <div className="mb-2">
-            <div className="flex justify-between text-xl border-b-2 border-gray-700 pb-4">
-              <span className="text-gray-600">Shipping</span>
+            <div className="flex justify-between text-xl border-b-2 border-gray700 pb-4">
+              <span className="text-gray600">Shipping</span>
               <span>$0</span>
             </div>
           </div>
 
           <div className="font-bold">
             <div className="flex justify-between py-2 text-xl">
-              <span className="text-gray-600">Total Cost</span>
+              <span className="text-gray600">Total Cost</span>
               <span>${order.totalAmount || total}</span>
             </div>
           </div>

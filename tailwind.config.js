@@ -11,38 +11,36 @@ export default {
     },
     extend: {
       colors: {
-        footerGray: '#FAFAFB',
+        // Grayscale palette
         white: '#FFFFFF',
-        violeteBg: '#F5F1FE',
-        blueBg: '#15ABFF',
-        primary: '#EA580C',
-        grayDark: '#CCD0D8',
-        grayLight: '#F3F4F6',
-        redBg: '#DC2627',
-        textBlack: '#171A1F',
-        lightGrey: '#DEE1E6',
-        grey: '#565D6D',
-        black: '#171A1F',
-        bannerBg: '#F4F1EB',
-        thickorenge: '#EA580C',
-        thinorenge: '#FFEDD5',
-        dashgrey: '#F5F6F6',
-        dashgreytext: '#737791',
-        salesbg: '#FFE2E5',
-        iconsales: '#FA5A7D',
-        orderbg: '#FFF4DE',
-        iconorder: '#FF947A',
-        psoldbg: '#DCFCE7',
-        psoldicon: '#3CD856',
-        customerbg: '#F3E8FF',
-        customericon: '#BF83FF',
-        dashbordblue: '#4079ED',
-        linkGrey: '#9095A1',
-        sliderBg: '#F0F9FF',
-        wishlistBg: '#F5F1F1',
-        textareaBorder: '#A8ADB7',
-        statusBlue: '#15ABFF',
-        statusRed: '#E82E2E',
+        gray50: '#F9FAFB',
+        gray100: '#F3F4F6',
+        gray200: '#E5E7EB',
+        gray300: '#D1D5DB',
+        gray400: '#9CA3AF',
+        gray500: '#6B7280',
+        gray600: '#4B5563',
+        gray700: '#374151',
+        gray800: '#1F2937',
+        gray900: '#111827',
+        black: '#000000',
+
+        // Semantic colors using grayscale
+        primary: '#374151', // gray700
+        secondary: '#6B7280', // gray500
+        accent: '#9CA3AF', // gray400
+        background: '#F9FAFB', // gray50
+        surface: '#FFFFFF',
+        text: '#111827', // gray900
+        textLight: '#6B7280', // gray500
+        border: '#E5E7EB', // gray200
+        hover: '#F3F4F6', // gray100
+        active: '#D1D5DB', // gray300
+        disabled: '#9CA3AF', // gray400
+        error: '#EF4444',
+        success: '#10B981',
+        warning: '#F59E0B',
+        info: '#3B82F6',
       },
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],

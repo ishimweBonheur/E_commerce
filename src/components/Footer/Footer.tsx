@@ -53,29 +53,29 @@ function Footer() {
         <div className="py-4 md:py-10">
           <div className="flex items-center ">
             <img
-              src="/iconcart.svg"
-              alt=""
-              className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+              src="/iconcart.jpg"
+              alt="ShopEase Logo"
+              className="w-14 h-10  object-fill bg-white "
             />
             <Link
               to="/"
-              className="font-semibold text-2xl text-primary"
+              className="font-semibold text-2xl text-gray600 "
               onClick={scroolUp}
             >
-              ShopEase
+              DOB
             </Link>
           </div>
         </div>
         <div className="md:py-0 ">
           <Link
             to="/shop"
-            className="text-xl font-semibold hover:text-primary transition-colors duration-300 "
+            className="text-xl font-semibold hover:text-gray600 transition-colors duration-300 "
           >
             Products
           </Link>
           <Link
             to="/features"
-            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-gray600 transition-colors duration-300"
           >
             Features
           </Link>
@@ -83,20 +83,20 @@ function Footer() {
         <div className="py-2 md:py-0">
           <Link
             to="/resources"
-            className="text-xl font-semibold  hover:text-primary transition-colors duration-300"
+            className="text-xl font-semibold  hover:text-gray600 transition-colors duration-300"
           >
             Resources
           </Link>
 
           <Link
             to="/user-guides"
-            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-gray600 transition-colors duration-300"
           >
             User Guides
           </Link>
           <Link
             to="/webinars"
-            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey block cursor-pointer hover:text-gray600 transition-colors duration-300"
           >
             Webinars
           </Link>
@@ -104,31 +104,31 @@ function Footer() {
         <div className="py-2 md:py-0">
           <Link
             to="/company"
-            className="text-xl font-semibold  hover:text-primary transition-colors duration-300"
+            className="text-xl font-semibold  hover:text-gray600 transition-colors duration-300"
           >
             Company
           </Link>
           <Link
             to="/about"
-            className="text-lg py-2 font-light text-grey block cursor-pointer  hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey block cursor-pointer  hover:text-gray600 transition-colors duration-300"
           >
             About
           </Link>
           <Link
             to="/signUp"
-            className="text-lg py-2 font-light text-grey block cursor-pointer  hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey block cursor-pointer  hover:text-gray600 transition-colors duration-300"
           >
             Join Us
           </Link>
           <Link
             to="/contact"
-            className="text-lg py-2 font-light text-grey cursor-pointer hover:text-primary transition-colors duration-300"
+            className="text-lg py-2 font-light text-grey cursor-pointer hover:text-gray600 transition-colors duration-300"
           >
             Contact
           </Link>
         </div>
         <div className="py-2 md:py-0 flex flex-col">
-          <div className="text-primary py-1 text-xl">
+          <div className="text-gray600 py-1 text-xl">
             Subscribe To Our Newsletter
           </div>
           <div className="text-dashgreytext font-normal text-md">
@@ -165,7 +165,7 @@ function Footer() {
                       className="md:w-90 py-2 relative border-2 rounded-md px-10"
                     />
                     <button
-                      className="bg-primary text-white px-4 py-1 z-0 rounded-md"
+                      className="bg-gray600 text-white px-4 py-1 z-0 rounded-md hover:bg-gray700 transition-colors duration-300"
                       id="subscribe"
                       type="submit"
                       disabled={isSubmitting}
@@ -200,7 +200,7 @@ function Footer() {
           <li>
             <Link
               to="/privacy"
-              className="hover:text-primary transition-colors duration-300"
+              className="hover:text-gray600 transition-colors duration-300"
             >
               Privacy
             </Link>
@@ -208,7 +208,7 @@ function Footer() {
           <li>
             <Link
               to="/terms"
-              className="hover:text-primary transition-colors duration-300"
+              className="hover:text-gray600 transition-colors duration-300"
             >
               Terms
             </Link>
@@ -216,7 +216,7 @@ function Footer() {
           <li>
             <Link
               to="/site-map"
-              className="hover:text-primary transition-colors duration-300"
+              className="hover:text-gray600 transition-colors duration-300"
             >
               Site Map
             </Link>

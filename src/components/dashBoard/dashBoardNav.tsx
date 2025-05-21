@@ -38,9 +38,11 @@ function DashNavbar() {
 
       let url = `${import.meta.env.VITE_BASE_URL}/notification`;
 
-      // Add vendor-specific endpoint only for vendors
+      // Add role-specific endpoint
       if (user?.userType?.name === 'Vendor') {
         url += `/vendor/${user.id}`;
+      } else if (user?.userType?.name === 'Admin') {
+        url += '/admin'; // Admin gets all notifications
       }
 
       console.log('Fetching notifications from:', url);
@@ -84,12 +86,12 @@ function DashNavbar() {
           ></button>
           <Link to="/" className="flex items-center gap-2">
             <img
-              src="/iconcart.svg"
-              alt=""
-              className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+              src="/iconcart.jpg"
+              alt="ShopEase Logo"
+              className="w-14 h-10  object-fill bg-white "
             />
             <h2 className="hidden md:block text-primary text-2xl font-bold">
-              ShopEase
+              DOB
             </h2>
           </Link>
         </div>
@@ -174,11 +176,11 @@ function DashNavbar() {
           <div className="px-4 py-2">
             <div className="flex items-center gap-2 py-2">
               <img
-                src="/iconcart.svg"
-                alt=""
-                className="w-8 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+                src="/iconcart.jpg"
+                alt="ShopEase Logo"
+                className="w-10 h-10 rounded-xl shadow-lg object-contain bg-white border border-gray-200"
               />
-              <h2 className="text-primary text-xl font-bold">ShopEase</h2>
+              <h2 className="text-primary text-xl font-bold">DOB</h2>
             </div>
             {user && (
               <div className="py-2">

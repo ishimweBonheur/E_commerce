@@ -20,6 +20,7 @@ interface Notification {
 function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
+  const [unreadCount, setUnreadCount] = useState(0);
   const user = useAppSelector((state) => state.signIn.user);
   const token = useAppSelector((state) => state.signIn.token);
 
@@ -97,6 +98,14 @@ function Notifications() {
     fetchNotifications();
   }, []);
 
+  useEffect(() => {
+    // Update unread count whenever notifications change
+    const count = notifications.filter(
+      (notification) => !notification.isRead
+    ).length;
+    setUnreadCount(count);
+  }, [notifications]);
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -108,7 +117,17 @@ function Notifications() {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Notifications</h1>
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <FaBell className="text-2xl text-gray-800" />
+            {unreadCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {unreadCount}
+              </span>
+            )}
+          </div>
+          <h1 className="text-2xl font-bold text-gray-800">Notifications</h1>
+        </div>
         {notifications.length > 0 && (
           <button
             onClick={deleteAllNotifications}

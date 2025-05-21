@@ -320,7 +320,7 @@ function ProductDetails() {
                       <div data-testid="ratingStar" key={index}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-primary"
+                          className="h-6 w-6 text-gray600"
                           viewBox="0 0 36 36"
                         >
                           <path
@@ -350,14 +350,14 @@ function ProductDetails() {
                             <stop
                               offset={`${(product.averageRating - Math.floor(product.averageRating)) * 100}%`}
                               style={{
-                                stopColor: 'rgb(250 204 21)',
+                                stopColor: '#4B5563',
                                 stopOpacity: 1,
                               }}
                             />
                             <stop
                               offset={`${(product.averageRating - Math.floor(product.averageRating)) * 100}%`}
                               style={{
-                                stopColor: 'rgb(156 163 175)',
+                                stopColor: '#D1D5DB',
                                 stopOpacity: 1,
                               }}
                             />
@@ -378,7 +378,7 @@ function ProductDetails() {
                     <div data-testid="emptyStar" key={index}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-gray-400"
+                        className="h-6 w-6 text-gray300"
                         viewBox="0 0 36 36"
                       >
                         <path
@@ -547,10 +547,10 @@ function ProductDetails() {
           {isVisible.state && isVisible.name === 'reviews' && (
             <div className="flex flex-col gap-6 xs:w-full lg:w-4/5 pt-4">
               {token && (
-                <div className="flex flex-col gap-4 w-full p-4 border border-gray-200 rounded-lg mb-6">
+                <div className="flex flex-col gap-4 w-full p-4 border border-gray200 rounded-lg mb-6">
                   <h2 className="font-semibold text-lg">Write a Review</h2>
                   <div className="flex items-center gap-2">
-                    <span className="text-gray-600">Rating:</span>
+                    <span className="text-gray600">Rating:</span>
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
@@ -565,8 +565,8 @@ function ProductDetails() {
                             xmlns="http://www.w3.org/2000/svg"
                             className={`h-6 w-6 ${
                               reviewForm.rating && star <= reviewForm.rating
-                                ? 'text-primary'
-                                : 'text-gray-300'
+                                ? 'text-gray600'
+                                : 'text-gray300'
                             }`}
                             viewBox="0 0 36 36"
                           >
@@ -585,7 +585,7 @@ function ProductDetails() {
                       setReviewForm({ ...reviewForm, content: e.target.value })
                     }
                     placeholder="Write your review here..."
-                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full p-2 border border-gray200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray600"
                     rows={4}
                   />
                   <button
@@ -617,7 +617,7 @@ function ProductDetails() {
                         showSuccessToast(error as string);
                       }
                     }}
-                    className="self-end px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+                    className="self-end px-4 py-2 bg-gray600 text-white rounded-md hover:bg-gray700 transition-colors"
                   >
                     Submit Review
                   </button>

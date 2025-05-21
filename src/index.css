@@ -39,19 +39,19 @@ button,
 .example-track {
   top: 0;
   bottom: 0;
-  background: #d3c1fa;
+  background: #e5e7eb;
   border-radius: 5px;
 }
 
 .example-track:nth-child(2) {
-  background: #6d31ed;
+  background: #4b5563;
 }
 
 .example-thumb {
   height: 20px;
   width: 20px;
   background-color: #ffffff;
-  border: 2px solid #6d31ed;
+  border: 2px solid #4b5563;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -82,17 +82,17 @@ button,
 }
 
 .filter-yellow {
-  filter: invert(73%) sepia(88%) saturate(1033%) hue-rotate(359deg)
-    brightness(103%) contrast(104%);
+  filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%)
+    contrast(90%);
 }
 
 /* Google Translate Styles */
 .goog-te-gadget {
-  color: #666 !important;
+  color: #6b7280 !important;
 }
 
 .goog-te-gadget-simple {
-  background-color: #fff !important;
+  background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
   padding: 8px 12px !important;
   border-radius: 6px !important;
@@ -104,24 +104,24 @@ button,
 }
 
 .goog-te-gadget-simple:hover {
-  border-color: #6d31ed !important;
+  border-color: #4b5563 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
 }
 
 .goog-te-menu-value {
-  color: #374151 !important;
+  color: #4b5563 !important;
   display: flex !important;
   align-items: center !important;
   gap: 4px !important;
 }
 
 .goog-te-menu-value span {
-  color: #374151 !important;
+  color: #4b5563 !important;
   font-family: 'Montserrat', sans-serif !important;
 }
 
 .goog-te-menu-value span:hover {
-  color: #6d31ed !important;
+  color: #6b7280 !important;
 }
 
 .goog-te-banner-frame {
@@ -143,18 +143,18 @@ button,
 .goog-te-menu2-item:link div,
 .goog-te-menu2-item:visited div,
 .goog-te-menu2-item:active div {
-  color: #374151 !important;
+  color: #4b5563 !important;
   padding: 8px 12px !important;
 }
 
 .goog-te-menu2-item:hover div {
   background-color: #f3f4f6 !important;
-  color: #6d31ed !important;
+  color: #6b7280 !important;
 }
 
 .goog-te-menu2-item-selected div {
-  background-color: #eee6fe !important;
-  color: #6d31ed !important;
+  background-color: #e5e7eb !important;
+  color: #4b5563 !important;
 }
 
 /* Hide Google Translate banner elements */
@@ -172,18 +172,18 @@ body {
 
 /* Custom styles for GoogleTranslate button */
 .google-translate-button {
-  @apply text-blue-500 hover:text-blue-700 transition duration-200;
+  @apply text-gray600 hover:text-gray700 transition duration-200;
 }
 
 /* Optional: Custom styles for dropdown if you use one */
 .google-translate-dropdown {
-  @apply absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-10 hidden group-hover:block;
+  @apply absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray700 rounded-lg shadow-lg z-10 hidden group-hover:block;
 }
 
 .google-translate-dropdown ul {
-  @apply py-2 text-gray-700 dark:text-gray-300;
+  @apply py-2 text-gray700 dark:text-gray300;
 }
 
 .google-translate-dropdown li {
-  @apply px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer;
+  @apply px-4 py-2 hover:bg-gray100 dark:hover:bg-gray600 cursor-pointer;
 }

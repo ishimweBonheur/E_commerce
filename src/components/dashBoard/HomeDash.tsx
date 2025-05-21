@@ -299,7 +299,7 @@ function HomeDash() {
                   </h3>
                 </div>
               </div>
-              <div className="mt-4 flex items-center text-sm text-orange-600">
+              <div className="mt-4 flex items-center text-sm text-gray600">
                 <span className="font-medium">Your Products</span>
               </div>
             </div>
@@ -454,7 +454,7 @@ function HomeDash() {
                   </h3>
                 </div>
               </div>
-              <div className="mt-4 flex items-center text-sm text-green-600">
+              <div className="mt-4 flex items-center text-sm text-gray600">
                 <span className="font-medium">All Products Sold</span>
               </div>
             </div>
@@ -476,7 +476,7 @@ function HomeDash() {
                   </h3>
                 </div>
               </div>
-              <div className="mt-4 flex items-center text-sm text-orange-600">
+              <div className="mt-4 flex items-center text-sm text-gray600">
                 <span className="font-medium">All Buyers</span>
               </div>
             </div>

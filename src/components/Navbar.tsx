@@ -28,26 +28,26 @@ function Navbar() {
   }, [dispatch]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)] backdrop-blur-sm bg-white/95">
+    <header className="sticky top-0 z-50 bg-surface shadow-[0_2px_10px_rgba(0,0,0,0.08)] backdrop-blur-sm bg-white/95">
       <div className="relative flex items-center justify-between w-full h-20 px-4 md:px-8 max-w-7xl mx-auto">
         {/* Mobile menu button */}
         <RxHamburgerMenu
           size={24}
-          className="lg:hidden text-gray-600 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-110"
+          className="lg:hidden text-gray600 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-110"
           onClick={() => setToggleMenu(!toggleMenu)}
         />
 
         {/* Logo/Brand */}
         <div className="flex items-center gap-3">
-          <div className="text-white  transition-all duration-300">
+          <div className="text-white transition-all duration-300">
             <img
-              src="/iconcart.svg"
-              alt=""
-              className="w-10 text-primary [filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(346deg)_brightness(104%)_contrast(101%)]"
+              src="/iconcart.jpg"
+              alt="ShopEase Logo"
+              className="w-14 h-10  object-fill bg-white "
             />
           </div>
           <h2 className="text-2xl font-bold text-primary hidden sm:block tracking-tight">
-            ShopEase
+            DOB
           </h2>
         </div>
 
@@ -64,8 +64,8 @@ function Navbar() {
               to={item.path}
               className={`px-5 h-full flex items-center justify-center font-medium transition-all duration-300 rounded-lg ${
                 location.pathname === item.path
-                  ? 'text-primary bg-primary/5 font-semibold'
-                  : 'text-gray-600 hover:text-primary hover:bg-gray-50'
+                  ? 'text-primary bg-gray100 font-semibold'
+                  : 'text-gray600 hover:text-primary hover:bg-gray50'
               }`}
             >
               {item.name}
@@ -80,17 +80,17 @@ function Navbar() {
               <Link to="/cart" className="relative group">
                 <LuShoppingCart
                   size={24}
-                  className="text-gray-600 group-hover:text-primary transition-all duration-300 group-hover:scale-110"
+                  className="text-gray600 group-hover:text-primary transition-all duration-300 group-hover:scale-110"
                 />
                 {cartItems.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg shadow-primary/20">
+                  <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg shadow-gray700/20">
                     {cartItems.length}
                   </span>
                 )}
               </Link>
               <FiHeart
                 size={24}
-                className="text-gray-600 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-110"
+                className="text-gray600 hover:text-primary transition-all duration-300 cursor-pointer hover:scale-110"
                 onClick={() => navigate('/wishlist')}
               />
             </>
@@ -114,36 +114,36 @@ function Navbar() {
                 {user.picture ? (
                   <img
                     src={user.picture}
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 group-hover:ring-primary/20 transition-all duration-300"
+                    className="w-10 h-10 rounded-full object-cover ring-2 ring-gray100 group-hover:ring-primary/20 transition-all duration-300"
                     alt="profile"
                   />
                 ) : (
                   <FaRegUserCircle
                     size={28}
-                    className="text-gray-600 group-hover:text-primary transition-all duration-300"
+                    className="text-gray600 group-hover:text-primary transition-all duration-300"
                   />
                 )}
-                <span className="text-gray-700 font-medium group-hover:text-primary transition-colors">
+                <span className="text-gray700 font-medium group-hover:text-primary transition-colors">
                   {`${user.firstName} ${user.lastName}`}
                 </span>
                 <FaAngleDown
                   size={16}
-                  className={`text-gray-500 transition-all duration-300 ${toggleProfileMenu ? 'rotate-180' : ''} group-hover:text-primary`}
+                  className={`text-gray500 transition-all duration-300 ${toggleProfileMenu ? 'rotate-180' : ''} group-hover:text-primary`}
                 />
               </div>
 
               {toggleProfileMenu && (
-                <div className="absolute top-14 right-0 bg-white shadow-xl rounded-xl w-56 py-2 z-50 border border-gray-100">
+                <div className="absolute top-14 right-0 bg-white shadow-xl rounded-xl w-56 py-2 z-50 border border-gray100">
                   {(user?.userType?.name === 'Admin' ||
                     user?.userType?.name === 'Vendor') && (
                     <div
-                      className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer transition-colors"
+                      className="flex items-center gap-3 px-4 py-2.5 text-gray700 hover:bg-gray50 hover:text-primary cursor-pointer transition-colors"
                       onClick={() => {
                         setToggleProfileMenu(false);
                         navigate('/dashboard');
                       }}
                     >
-                      <span className="text-gray-500">
+                      <span className="text-gray500">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -164,15 +164,15 @@ function Navbar() {
                       <span>Dashboard</span>
                     </div>
                   )}
-                  <div className="border-gray-100 mt-1 pt-1">
+                  <div className="border-gray100 mt-1 pt-1">
                     <div
-                      className="flex items-center gap-3 px-4 py-2.5 text-gray-700 hover:bg-gray-50 hover:text-primary cursor-pointer transition-colors"
+                      className="flex items-center gap-3 px-4 py-2.5 text-gray700 hover:bg-gray50 hover:text-primary cursor-pointer transition-colors"
                       onClick={() => {
                         setToggleProfileMenu(false);
                         dispatch(logout());
                       }}
                     >
-                      <span className="text-gray-500">
+                      <span className="text-gray500">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -199,7 +199,7 @@ function Navbar() {
             <HSButton
               path="/signIn"
               title="Login"
-              styles="hidden lg:flex bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              styles="hidden lg:flex bg-primary hover:bg-gray800 text-white px-6 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-gray700/20"
             />
           )}
         </div>
@@ -207,7 +207,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {toggleMenu && (
-        <div className="lg:hidden absolute top-20 left-0 right-0 bg-white shadow-xl z-40 border-t border-gray-100">
+        <div className="lg:hidden absolute top-20 left-0 right-0 bg-white shadow-xl z-40 border-t border-gray100">
           <div className="px-4 py-4 space-y-2">
             {[
               { path: '/', name: 'Home' },
@@ -220,8 +220,8 @@ function Navbar() {
                 to={item.path}
                 className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
                   location.pathname === item.path
-                    ? 'bg-primary/10 text-primary font-medium'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                    ? 'bg-gray100 text-primary font-medium'
+                    : 'text-gray700 hover:bg-gray50 hover:text-primary'
                 }`}
                 onClick={() => setToggleMenu(false)}
               >
@@ -229,26 +229,26 @@ function Navbar() {
               </Link>
             ))}
           </div>
-          <div className="border-t border-gray-100 px-4 py-4">
+          <div className="border-t border-gray100 px-4 py-4">
             {user ? (
               <>
                 <div className="flex items-center gap-3 px-4 py-3">
                   {user.picture ? (
                     <img
                       src={user.picture}
-                      className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100"
+                      className="w-10 h-10 rounded-full object-cover ring-2 ring-gray100"
                       alt="profile"
                     />
                   ) : (
-                    <FaRegUserCircle size={28} className="text-gray-600" />
+                    <FaRegUserCircle size={28} className="text-gray600" />
                   )}
-                  <span className="font-medium text-gray-800">
+                  <span className="font-medium text-gray800">
                     {`${user.firstName} ${user.lastName}`}
                   </span>
                 </div>
                 <button
                   type="button"
-                  className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary rounded-lg transition-colors"
+                  className="w-full flex items-center gap-3 px-4 py-3 text-gray700 hover:bg-gray50 hover:text-primary rounded-lg transition-colors"
                   onClick={() => {
                     setToggleMenu(false);
                     dispatch(logout());
@@ -276,7 +276,7 @@ function Navbar() {
               <HSButton
                 path="/signIn"
                 title="Login"
-                styles="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                styles="w-full bg-primary hover:bg-gray800 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-gray700/20"
               />
             )}
           </div>

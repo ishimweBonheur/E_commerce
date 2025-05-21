@@ -64,15 +64,17 @@ function MostSelling() {
             .map((_, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center p-4 rounded-xl bg-red-50/80 text-red-600 text-sm"
+                className="flex items-center justify-center p-4 rounded-xl bg-gray100 text-gray600 text-sm"
               >
                 Failed to load products. Please try again.
               </div>
             ))}
 
-        {popularProducts.map((product) => (
-          <SingleItem key={product.id} product={product} />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {popularProducts.map((product) => (
+            <SingleItem key={product.id} product={product} />
+          ))}
+        </div>
 
         {status !== 'loading' && popularProducts.length === 0 && (
           <div className="flex items-center justify-center p-4 text-gray-500 text-sm">

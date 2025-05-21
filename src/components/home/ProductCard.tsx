@@ -144,7 +144,7 @@ function ProductCard({ product }: ProductCardProps) {
                   <div data-testid="ratingStar" key={index}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-primary"
+                      className="h-4 w-4 text-gray600"
                       viewBox="0 0 36 36"
                     >
                       <path
@@ -175,14 +175,14 @@ function ProductCard({ product }: ProductCardProps) {
                       <stop
                         offset={`${(product.averageRating - Math.floor(product.averageRating)) * 100}%`}
                         style={{
-                          stopColor: 'rgb(250 204 21)',
+                          stopColor: '#4B5563',
                           stopOpacity: 1,
                         }}
                       />
                       <stop
                         offset={`${(product.averageRating - Math.floor(product.averageRating)) * 100}%`}
                         style={{
-                          stopColor: 'rgb(156 163 175)',
+                          stopColor: '#D1D5DB',
                           stopOpacity: 1,
                         }}
                       />
@@ -202,7 +202,7 @@ function ProductCard({ product }: ProductCardProps) {
                 <div data-testid="emptyStar" key={index}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
+                    className="h-4 w-4 text-gray300"
                     viewBox="0 0 36 36"
                   >
                     <path

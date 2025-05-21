@@ -30,7 +30,7 @@ function HSInput({
       onChange={onChange}
       value={value}
       type={type}
-      className={`${style} bg-grayLight text-black duration-100 outline-none justify-between flex items-center px-4 py-3 w-full rounded-md font-light mt-2 group-hover:border-grayDark`}
+      className={`${style} bg-gray50 text-gray900 duration-100 outline-none justify-between flex items-center px-4 py-3 w-full rounded-md font-light mt-2 border border-gray200 focus:border-gray400 group-hover:border-gray300`}
     />
   );
 }

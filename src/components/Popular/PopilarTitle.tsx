@@ -15,7 +15,7 @@ function PopularTitle({
   return (
     <div className="flex items-center justify-between mb-4 bg-white p-4 rounded-t-xl shadow-sm">
       <div className="group">
-        <h2 className="text-xl font-semibold text-gray-800 group-hover:text-orange-600 transition-colors flex items-center gap-2">
+        <h2 className="text-xl font-semibold text-gray-800 group-hover:text-primary transition-colors flex items-center gap-2">
           {section}
           <span className="text-sm text-gray-500 font-normal">
             (

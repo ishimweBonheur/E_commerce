@@ -37,8 +37,8 @@ function PopularSection() {
                 onClick={() => setActiveSection(section.id as SectionType)}
                 className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
                   activeSection === section.id
-                    ? 'border-b border-b-3 border-orange-600  '
-                    : 'bg-white text-gray-600 hover:border-b border-b-3 border-orange-50'
+                    ? 'border-b border-b-3 border-gray600 text-gray800'
+                    : 'bg-white text-gray600 hover:border-b border-b-3 border-gray200'
                 }`}
               >
                 {section.title}

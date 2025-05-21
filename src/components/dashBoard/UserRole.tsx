@@ -229,7 +229,11 @@ function TableUserRole() {
         </div>
         <div className="flex-1 p-5">
           <div className="w-full h-10 flex flex-row items-center justify-center">
-            <img src={TableLogo} alt="" className="w-[50px] h-[50px]" />
+            <img
+              src={TableLogo}
+              alt=""
+              className="w-[50px] h-[50px] text-gray600"
+            />
             <p className="mt-3 text-[20px] font-bold">Register Role</p>
           </div>
           <div className="w-full mt-10 flex flex-col">
