@@ -56,11 +56,17 @@ const initialState: ProductsState = {
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
-    const response = await axios.get<Payload>(
-      `${import.meta.env.VITE_BASE_URL}/product`
-    );
-    return response.data.data;
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get<Payload>(
+        `${import.meta.env.VITE_BASE_URL}/product`
+      );
+      return response.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || 'Failed to fetch products'
+      );
+    }
   }
 );
 

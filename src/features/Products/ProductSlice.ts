@@ -28,12 +28,18 @@ interface SearchParams {
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
-    const response = await axios.get<Payload>(
-      `${import.meta.env.VITE_BASE_URL}/product`
-    );
-    console.log('API Response:', response.data.data);
-    return response.data.data;
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get<Payload>(
+        `${import.meta.env.VITE_BASE_URL}/product`
+      );
+      console.log('API Response:', response.data.data);
+      return response.data.data;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(
+        err?.response?.data?.message || 'Failed to fetch products'
+      );
+    }
   }
 );
 
@@ -104,6 +110,9 @@ export const searchProducts = createAsyncThunk<
 export const fetchWishlistProducts = createAsyncThunk<Product[], string | null>(
   'products/fetchWishlistProducts',
   async (token, thunkAPI) => {
+    if (!token) {
+      return thunkAPI.rejectWithValue('User not authenticated');
+    }
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/buyer/getOneWishlist`,

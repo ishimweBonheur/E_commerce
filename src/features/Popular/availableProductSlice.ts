@@ -16,8 +16,10 @@ export const fetchAvailableProducts = createAsyncThunk<Product[]>(
       const response = await axios.get(`${URL}/product/getAvailableProducts`);
       const { data } = response;
       return data.availableProducts;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || 'Failed to fetch available products'
+      );
     }
   }
 );

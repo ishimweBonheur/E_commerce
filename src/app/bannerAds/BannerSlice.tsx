@@ -13,8 +13,10 @@ export const fetchBannerProducts = createAsyncThunk<Product[]>(
       );
       const { data } = response;
       return data.availableProducts.slice(0, 2);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || 'Failed to fetch banner products'
+      );
     }
   }
 );

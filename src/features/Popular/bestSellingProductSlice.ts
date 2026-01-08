@@ -18,7 +18,9 @@ export const fetchBestSellingProducts = createAsyncThunk<
     const response = await axios.get(`${URL}/product/bestselling`);
     return response.data;
   } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    return thunkAPI.rejectWithValue(
+      error?.response?.data?.message || 'Failed to fetch best-selling products'
+    );
   }
 });
 
